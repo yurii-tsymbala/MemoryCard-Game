@@ -8,7 +8,18 @@
 
 import Foundation
 
-struct Image: Decodable {
-  let name: String?
-  let link: String?
+struct Image: Codable {
+  let name: String
+  let link: String
+
+  enum CodingKeys: String, CodingKey {
+    case name = "name"
+    case link = "link"
+  }
 }
+
+struct Images {
+  var images: [Image]
+}
+
+
