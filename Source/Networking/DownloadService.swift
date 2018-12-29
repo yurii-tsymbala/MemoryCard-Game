@@ -10,7 +10,7 @@ import UIKit
 
 protocol DownloadServiceType {
   func downloadImagesToDB()
-
+  //func fetchUIImageArray() with logic of stickerpack
 }
 
 class DownloadService: DownloadServiceType {
@@ -18,6 +18,13 @@ class DownloadService: DownloadServiceType {
   var image: ImageMO!
 
   func downloadImagesToDB() {
+    /* парсанути джейсонку і зберегти обєкти в структуру Images
+     цю структурку пройтись масивом і зберегти в кордату
+     в юзердефолтс сервісі поставити апкаскачана = тру
+
+
+        // викачати з інтернету  якшо успішно то зберегти в базу даних і якшо успішно то я викличу цю функцію і поставлю значенння в юзердефолтс сервісі шо фотки збережені
+     */
 
 
     if let appDelegate = (UIApplication.shared.delegate as? AppDelegate) {
@@ -25,7 +32,7 @@ class DownloadService: DownloadServiceType {
 
 
     }
-    // викачати з інтернету  якшо успішно то зберегти в базу даних і якшо успішно то я викличу цю функцію і поставлю значенння в юзердефолтс сервісі шо фотки збережені
+
 
   }
 
@@ -45,5 +52,5 @@ class DownloadService: DownloadServiceType {
       }.resume()
   }
 
-  //fetchUIImageArray with logic of stickerpack
+
 }
