@@ -18,6 +18,7 @@
 		4B6925DB21D6D62300127D66 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4B6925D921D6D62300127D66 /* LaunchScreen.storyboard */; };
 		4B6925E721D6D79E00127D66 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4B6925E621D6D79E00127D66 /* Main.storyboard */; };
 		4B7CE63D21D78B10003C41C0 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4B7CE63C21D78B10003C41C0 /* Info.plist */; };
+		4B7CE63F21D78BCE003C41C0 /* DownloadService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B7CE63E21D78BCE003C41C0 /* DownloadService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,6 +34,7 @@
 		4B6925DA21D6D62300127D66 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4B6925E621D6D79E00127D66 /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		4B7CE63C21D78B10003C41C0 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4B7CE63E21D78BCE003C41C0 /* DownloadService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -50,6 +52,7 @@
 			isa = PBXGroup;
 			children = (
 				4B08EE1621D6D95B00D09E94 /* FileManager.swift */,
+				4B7CE63E21D78BCE003C41C0 /* DownloadService.swift */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -210,6 +213,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4B08EE2521D6DB4100D09E94 /* Result.swift in Sources */,
+				4B7CE63F21D78BCE003C41C0 /* DownloadService.swift in Sources */,
 				4B08EE1D21D6DAD900D09E94 /* Level.swift in Sources */,
 				4B6925D121D6D62100127D66 /* AppDelegate.swift in Sources */,
 				4B08EE1721D6D95B00D09E94 /* FileManager.swift in Sources */,
