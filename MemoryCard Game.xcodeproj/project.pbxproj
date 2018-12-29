@@ -19,6 +19,9 @@
 		4B6925E721D6D79E00127D66 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4B6925E621D6D79E00127D66 /* Main.storyboard */; };
 		4B7CE63D21D78B10003C41C0 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4B7CE63C21D78B10003C41C0 /* Info.plist */; };
 		4B7CE63F21D78BCE003C41C0 /* DownloadService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B7CE63E21D78BCE003C41C0 /* DownloadService.swift */; };
+		4B7CE64121D7916C003C41C0 /* UserDefaultsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B7CE64021D7916C003C41C0 /* UserDefaultsService.swift */; };
+		4B7CE64421D7AAC0003C41C0 /* Source.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4B7CE64221D7AAC0003C41C0 /* Source.xcdatamodeld */; };
+		4B7CE64621D7B2AF003C41C0 /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B7CE64521D7B2AF003C41C0 /* Image.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,6 +38,9 @@
 		4B6925E621D6D79E00127D66 /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		4B7CE63C21D78B10003C41C0 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4B7CE63E21D78BCE003C41C0 /* DownloadService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadService.swift; sourceTree = "<group>"; };
+		4B7CE64021D7916C003C41C0 /* UserDefaultsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsService.swift; sourceTree = "<group>"; };
+		4B7CE64321D7AAC0003C41C0 /* Source.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Source.xcdatamodel; sourceTree = "<group>"; };
+		4B7CE64521D7B2AF003C41C0 /* Image.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Image.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,6 +59,7 @@
 			children = (
 				4B08EE1621D6D95B00D09E94 /* FileManager.swift */,
 				4B7CE63E21D78BCE003C41C0 /* DownloadService.swift */,
+				4B7CE64021D7916C003C41C0 /* UserDefaultsService.swift */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -69,6 +76,8 @@
 			isa = PBXGroup;
 			children = (
 				4B08EE1C21D6DAD900D09E94 /* Level.swift */,
+				4B7CE64221D7AAC0003C41C0 /* Source.xcdatamodeld */,
+				4B7CE64521D7B2AF003C41C0 /* Image.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -216,9 +225,12 @@
 				4B7CE63F21D78BCE003C41C0 /* DownloadService.swift in Sources */,
 				4B08EE1D21D6DAD900D09E94 /* Level.swift in Sources */,
 				4B6925D121D6D62100127D66 /* AppDelegate.swift in Sources */,
+				4B7CE64421D7AAC0003C41C0 /* Source.xcdatamodeld in Sources */,
+				4B7CE64121D7916C003C41C0 /* UserDefaultsService.swift in Sources */,
 				4B08EE1721D6D95B00D09E94 /* FileManager.swift in Sources */,
 				4B08EE2321D6DB1A00D09E94 /* MenuViewModel.swift in Sources */,
 				4B08EE2021D6DAF500D09E94 /* MenuViewController.swift in Sources */,
+				4B7CE64621D7B2AF003C41C0 /* Image.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -412,6 +424,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		4B7CE64221D7AAC0003C41C0 /* Source.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				4B7CE64321D7AAC0003C41C0 /* Source.xcdatamodel */,
+			);
+			currentVersion = 4B7CE64321D7AAC0003C41C0 /* Source.xcdatamodel */;
+			path = Source.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 4B6925C521D6D62100127D66 /* Project object */;
 }
