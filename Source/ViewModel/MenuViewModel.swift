@@ -17,16 +17,19 @@ class MenuViewModel {
     self.userDefaultsServive = userDefaultsServive
   }
   
-  func checkAppState(completion: @escaping (_ appState: Bool) -> Void ) {
+  func checkAppState(completion: @escaping (_ appState: Bool, _ error: Error?) -> Void ) {
     if !userDefaultsServive.isAppInstalled {
       userDefaultsServive.downloadService.checkTheDownload { [weak self] downloadResult in
         guard let strongSelf = self else { return }
         switch downloadResult {
         case .success(_):
           strongSelf.userDefaultsServive.isAppInstalled = true
-          completion(true)
-        case .failure(_):
-          completion(false)
+          //activityIndicatorIsRolling = false // комент знизу // у вюконтролері непотрібна функція
+          completion(true,nil)
+        case .failure(let error):
+          completion(false,error)
+          // виконуєтся багато разів в консолі // треба видалити функцію з вюконтролера де перевірка майже та сама
+          //activityIndicatorisRolling = active
           strongSelf.userDefaultsServive.isAppInstalled = false
         }
       }

@@ -20,12 +20,19 @@ class MenuViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
 
-    viewModel.checkAppState { result in
-      if result {
-        print("Succes")
+    viewModel.checkAppState { (isInstalled, error) in
+      if error == nil {
+        if isInstalled {
+         print("Succesfully downloaded images")
+         // UIActivityIndicatorView.islala = false
+           //userIteraction.deactivate = false
+        }
       } else {
-        print("Check the Internet Connection and relaunch the App")
+      // UIActivityIndicatorView.islala = true
+        //userIteraction.deactivate = true
       }
+
+
     }
     // print in console images from Core Data 46.26 video
   }

@@ -18,6 +18,8 @@ enum DownloadServiceError: Error {
   case seventhError
   case eighthError
   case ninthError
+  case tenthError
+  case eleventhError
 }
 
 protocol DownloadServiceType {
@@ -28,6 +30,7 @@ protocol DownloadServiceType {
 class DownloadService: DownloadServiceType {
 
   private var images: [Image]!
+  private var imagesData = [ImageData]()
 
   func checkTheDownload(completion: @escaping (Result<Bool, Error>) -> Void) {
     fetchDataFromJSON { [weak self] fetchDataResult in
@@ -48,7 +51,7 @@ class DownloadService: DownloadServiceType {
     }
   }
 
-  private func fetchDataFromJSON(completion: @escaping (Result<[Image], Error>) -> Void) {
+  private func fetchDataFromJSON(completion: @escaping (Result<[ImageData], Error>) -> Void) {
     let jsonURL = URL(string: "https://raw.githubusercontent.com/yurii-tsymbala/Assets/master/images.json")!
     URLSession.shared.dataTask(with: jsonURL) { [weak self]  (data,_,error) in
       guard let strongSelf = self else { return }
@@ -58,7 +61,20 @@ class DownloadService: DownloadServiceType {
           let decoder = JSONDecoder()
           strongSelf.images = try decoder.decode([Image].self, from: data)
           if let successfullyParsedImages = strongSelf.images {
-            completion(Result.success(successfullyParsedImages))
+            for image in successfullyParsedImages {
+              DispatchQueue.global().async {
+                let dataURL = URL(string: image.link)!
+                let data = try? Data(contentsOf: dataURL)
+                guard let downloadedData = data else {completion(Result.failure(DownloadServiceError.tenthError));return}
+                let imageData = ImageData(name: image.name, data: downloadedData)
+                strongSelf.imagesData.append(imageData)
+                if strongSelf.imagesData.count == 92 {
+                  completion(Result.success(strongSelf.imagesData))
+                } else {
+                  completion(Result.failure(DownloadServiceError.eleventhError))
+                }
+              }
+            }
           } else {
             completion(Result.failure(DownloadServiceError.fifthError))
           }
@@ -75,56 +91,20 @@ class DownloadService: DownloadServiceType {
       }.resume()
   }
 
-  private func saveToCoreData(images: [Image], completion: @escaping (Result<Bool, Error>) -> Void ) {
-    if let appDelegate = (UIApplication.shared.delegate as? AppDelegate) {
-      for image in images {
-        let imageManagedObject = ImageMO(context: appDelegate.persistentContainer.viewContext)
-        DispatchQueue.global().async {
-          let dataURL = URL(string: image.link)!
-          let data = try? Data(contentsOf: dataURL)
-          if let successfullDownloadedData = data  {
-            imageManagedObject.image = successfullDownloadedData
-            imageManagedObject.name = image.name
-            appDelegate.saveContext()
-            completion(Result.success(true))
-          } else {
-            completion(Result.failure(DownloadServiceError.ninthError))
-          }
+  private func saveToCoreData(images: [ImageData], completion: @escaping (Result<Bool, Error>) -> Void ) {
+    DispatchQueue.main.async {
+      if let appDelegate = (UIApplication.shared.delegate as? AppDelegate) {
+        for image in images {
+          let imageManagedObject = ImageMO(context: appDelegate.persistentContainer.viewContext)
+          imageManagedObject.name = image.name
+          imageManagedObject.image = image.data
         }
+        appDelegate.saveContext()
+        completion(Result.success(true))
+      } else {
+        completion(Result.failure(DownloadServiceError.ninthError))
       }
-    } else {
-      completion(Result.failure(DownloadServiceError.eighthError))
     }
+
   }
-
-//  func fetchingData(completion: @escaping (Result<Bool, Error>) -> Void) {
-//    let jsonURL = URL(string: "https://raw.githubusercontent.com/yurii-tsymbala/Assets/master/images.json")!
-//    URLSession.shared.dataTask(with: jsonURL) { (data, response, error) in
-//      guard let data = data else { return }
-//      do {
-//        let decoder = JSONDecoder()
-//        self.images = try decoder.decode([Image].self, from: data)
-//        print(self.images)
-//
-//        if let appDelegate = (UIApplication.shared.delegate as? AppDelegate) {
-//          for image in self.images {
-//            let imageMO = ImageMO(context: appDelegate.persistentContainer.viewContext)
-//            DispatchQueue.global().async {
-//              let dataURL = URL(string: image.link)!
-//              let data = try? Data(contentsOf: dataURL)
-//              DispatchQueue.main.async {
-//                imageMO.image = data
-//                imageMO.name = image.name
-//                appDelegate.saveContext()
-//              }
-//            }
-//          }
-//        }
-//      } catch let err {
-//        print("Err", err)
-//      }
-//      }.resume()
-//  }
-
-
 }
