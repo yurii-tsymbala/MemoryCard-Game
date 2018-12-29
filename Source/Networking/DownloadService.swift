@@ -15,7 +15,7 @@ protocol DownloadServiceType {
 
 class DownloadService: DownloadServiceType {
 
-  var image: ImageMO!
+  var images: [Image]!
 
   func downloadImagesToDB() {
     /* парсанути джейсонку і зберегти обєкти в структуру Images
@@ -23,29 +23,37 @@ class DownloadService: DownloadServiceType {
      в юзердефолтс сервісі поставити апкаскачана = тру
 
 
-        // викачати з інтернету  якшо успішно то зберегти в базу даних і якшо успішно то я викличу цю функцію і поставлю значенння в юзердефолтс сервісі шо фотки збережені
+     // викачати з інтернету  якшо успішно то зберегти в базу даних і якшо успішно то я викличу цю функцію і поставлю значенння в юзердефолтс сервісі шо фотки збережені
      */
 
 
-    if let appDelegate = (UIApplication.shared.delegate as? AppDelegate) {
-      image = ImageMO(context: appDelegate.persistentContainer.viewContext)
-
-
-    }
 
 
   }
 
- func fetchingData() {
-    var defaultUrl = URL(string: "http://www.recipepuppy.com/api/")
-    defaultUrl = defaultUrl?.appendingPathComponent("?i=\(newIngredientsString)")
-    URLSession.shared.dataTask(with: defaultUrl! ) { (data, response, error) in
+  func fetchingData(completion: @escaping (Result<Bool, Error>) -> Void) {
+    let jsonURL = URL(string: "https://raw.githubusercontent.com/yurii-tsymbala/Assets/master/images.json")!
+    URLSession.shared.dataTask(with: jsonURL) { (data, response, error) in
       guard let data = data else { return }
       do {
         let decoder = JSONDecoder()
-        self.meals = try decoder.decode(Meals.self, from: data)
-        self.cellViewModels = (self.meals?.meals.map { MealsCellViewModel($0) })!
-        self.reloadingData?()
+        self.images = try decoder.decode([Image].self, from: data)
+        print(self.images)
+
+        if let appDelegate = (UIApplication.shared.delegate as? AppDelegate) {
+          for image in self.images {
+            let imageMO = ImageMO(context: appDelegate.persistentContainer.viewContext)
+            DispatchQueue.global().async {
+              let dataURL = URL(string: image.link)!
+              let data = try? Data(contentsOf: dataURL)
+              DispatchQueue.main.async {
+                imageMO.image = data
+                imageMO.name = image.name
+                appDelegate.saveContext()
+              }
+            }
+          }
+        }
       } catch let err {
         print("Err", err)
       }

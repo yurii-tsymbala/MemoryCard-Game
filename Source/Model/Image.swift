@@ -18,8 +18,4 @@ struct Image: Codable {
   }
 }
 
-struct Images {
-  var images: [Image]
-}
-
 
