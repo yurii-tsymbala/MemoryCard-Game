@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		4B08EE1721D6D95B00D09E94 /* FileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B08EE1621D6D95B00D09E94 /* FileManager.swift */; };
 		4B08EE1D21D6DAD900D09E94 /* Level.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B08EE1C21D6DAD900D09E94 /* Level.swift */; };
 		4B08EE2021D6DAF500D09E94 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B08EE1E21D6DAF500D09E94 /* MenuViewController.swift */; };
 		4B08EE2121D6DAF500D09E94 /* MenuViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4B08EE1F21D6DAF500D09E94 /* MenuViewController.xib */; };
@@ -25,7 +24,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		4B08EE1621D6D95B00D09E94 /* FileManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileManager.swift; sourceTree = "<group>"; };
 		4B08EE1C21D6DAD900D09E94 /* Level.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Level.swift; sourceTree = "<group>"; };
 		4B08EE1E21D6DAF500D09E94 /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		4B08EE1F21D6DAF500D09E94 /* MenuViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MenuViewController.xib; sourceTree = "<group>"; };
@@ -57,7 +55,6 @@
 		4B08EE1521D6D92500D09E94 /* Networking */ = {
 			isa = PBXGroup;
 			children = (
-				4B08EE1621D6D95B00D09E94 /* FileManager.swift */,
 				4B7CE63E21D78BCE003C41C0 /* DownloadService.swift */,
 				4B7CE64021D7916C003C41C0 /* UserDefaultsService.swift */,
 			);
@@ -227,7 +224,6 @@
 				4B6925D121D6D62100127D66 /* AppDelegate.swift in Sources */,
 				4B7CE64421D7AAC0003C41C0 /* Source.xcdatamodeld in Sources */,
 				4B7CE64121D7916C003C41C0 /* UserDefaultsService.swift in Sources */,
-				4B08EE1721D6D95B00D09E94 /* FileManager.swift in Sources */,
 				4B08EE2321D6DB1A00D09E94 /* MenuViewModel.swift in Sources */,
 				4B08EE2021D6DAF500D09E94 /* MenuViewController.swift in Sources */,
 				4B7CE64621D7B2AF003C41C0 /* Image.swift in Sources */,

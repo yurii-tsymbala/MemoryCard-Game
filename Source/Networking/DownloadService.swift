@@ -8,57 +8,123 @@
 
 import UIKit
 
+enum DownloadServiceError: Error {
+  case firstError
+  case secondError
+  case thirdError
+  case fourthError
+  case fifthError
+  case sixthError
+  case seventhError
+  case eighthError
+  case ninthError
+}
+
 protocol DownloadServiceType {
-  func downloadImagesToDB()
+  func checkTheDownload(completion: @escaping (Result<Bool, Error>) -> Void)
   //func fetchUIImageArray() with logic of stickerpack
 }
 
 class DownloadService: DownloadServiceType {
 
-  var images: [Image]!
+  private var images: [Image]!
 
-  func downloadImagesToDB() {
-    /* парсанути джейсонку і зберегти обєкти в структуру Images
-     цю структурку пройтись масивом і зберегти в кордату
-     в юзердефолтс сервісі поставити апкаскачана = тру
-
-
-     // викачати з інтернету  якшо успішно то зберегти в базу даних і якшо успішно то я викличу цю функцію і поставлю значенння в юзердефолтс сервісі шо фотки збережені
-     */
-
-
-
-
+  func checkTheDownload(completion: @escaping (Result<Bool, Error>) -> Void) {
+    fetchDataFromJSON { [weak self] fetchDataResult in
+      guard let strongSelf = self else { return }
+      switch fetchDataResult {
+      case .success(let images):
+        strongSelf.saveToCoreData(images: images, completion: { coreDataResult in
+          switch coreDataResult {
+          case .success(let isSaved):
+            completion(Result.success(isSaved))
+          case .failure(let error):
+            completion(Result.failure(error))
+          }
+        })
+      case .failure(let error):
+        completion(Result.failure(error))
+      }
+    }
   }
 
-  func fetchingData(completion: @escaping (Result<Bool, Error>) -> Void) {
+  private func fetchDataFromJSON(completion: @escaping (Result<[Image], Error>) -> Void) {
     let jsonURL = URL(string: "https://raw.githubusercontent.com/yurii-tsymbala/Assets/master/images.json")!
-    URLSession.shared.dataTask(with: jsonURL) { (data, response, error) in
-      guard let data = data else { return }
-      do {
-        let decoder = JSONDecoder()
-        self.images = try decoder.decode([Image].self, from: data)
-        print(self.images)
-
-        if let appDelegate = (UIApplication.shared.delegate as? AppDelegate) {
-          for image in self.images {
-            let imageMO = ImageMO(context: appDelegate.persistentContainer.viewContext)
-            DispatchQueue.global().async {
-              let dataURL = URL(string: image.link)!
-              let data = try? Data(contentsOf: dataURL)
-              DispatchQueue.main.async {
-                imageMO.image = data
-                imageMO.name = image.name
-                appDelegate.saveContext()
-              }
-            }
+    URLSession.shared.dataTask(with: jsonURL) { [weak self]  (data,_,error) in
+      guard let strongSelf = self else { return }
+      if error == nil {
+        guard let data = data else { completion(Result.failure(DownloadServiceError.thirdError)); return }
+        do {
+          let decoder = JSONDecoder()
+          strongSelf.images = try decoder.decode([Image].self, from: data)
+          if let successfullyParsedImages = strongSelf.images {
+            completion(Result.success(successfullyParsedImages))
+          } else {
+            completion(Result.failure(DownloadServiceError.fifthError))
           }
+        } catch _ {
+          completion(Result.failure(DownloadServiceError.fourthError))
         }
-      } catch let err {
-        print("Err", err)
+      } else {
+        if let _ = error {
+          completion(Result.failure(DownloadServiceError.firstError))
+        } else {
+          completion(Result.failure(DownloadServiceError.secondError))
+        }
       }
       }.resume()
   }
+
+  private func saveToCoreData(images: [Image], completion: @escaping (Result<Bool, Error>) -> Void ) {
+    if let appDelegate = (UIApplication.shared.delegate as? AppDelegate) {
+      for image in images {
+        let imageManagedObject = ImageMO(context: appDelegate.persistentContainer.viewContext)
+        DispatchQueue.global().async {
+          let dataURL = URL(string: image.link)!
+          let data = try? Data(contentsOf: dataURL)
+          if let successfullDownloadedData = data  {
+            imageManagedObject.image = successfullDownloadedData
+            imageManagedObject.name = image.name
+            appDelegate.saveContext()
+            completion(Result.success(true))
+          } else {
+            completion(Result.failure(DownloadServiceError.ninthError))
+          }
+        }
+      }
+    } else {
+      completion(Result.failure(DownloadServiceError.eighthError))
+    }
+  }
+
+//  func fetchingData(completion: @escaping (Result<Bool, Error>) -> Void) {
+//    let jsonURL = URL(string: "https://raw.githubusercontent.com/yurii-tsymbala/Assets/master/images.json")!
+//    URLSession.shared.dataTask(with: jsonURL) { (data, response, error) in
+//      guard let data = data else { return }
+//      do {
+//        let decoder = JSONDecoder()
+//        self.images = try decoder.decode([Image].self, from: data)
+//        print(self.images)
+//
+//        if let appDelegate = (UIApplication.shared.delegate as? AppDelegate) {
+//          for image in self.images {
+//            let imageMO = ImageMO(context: appDelegate.persistentContainer.viewContext)
+//            DispatchQueue.global().async {
+//              let dataURL = URL(string: image.link)!
+//              let data = try? Data(contentsOf: dataURL)
+//              DispatchQueue.main.async {
+//                imageMO.image = data
+//                imageMO.name = image.name
+//                appDelegate.saveContext()
+//              }
+//            }
+//          }
+//        }
+//      } catch let err {
+//        print("Err", err)
+//      }
+//      }.resume()
+//  }
 
 
 }

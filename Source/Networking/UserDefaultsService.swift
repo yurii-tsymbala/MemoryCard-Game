@@ -10,12 +10,13 @@ import Foundation
 
 final class UserDefaultsService {
   private let userDefaults = UserDefaults.standard
+  public let downloadService: DownloadService
 
   private enum Keys: String {
     case keyAppInstalled
   }
 
-  private var isAppInstalled: Bool {
+  public var isAppInstalled: Bool {
     get {
       let isAppInstalled = userDefaults.bool(forKey: Keys.keyAppInstalled.rawValue)
       return isAppInstalled
@@ -26,25 +27,23 @@ final class UserDefaultsService {
     }
   }
 
-  private let downloadService: DownloadService
-
-  private func checkAppState() {
-    if !isAppInstalled {
-      fetchData()
-    }
-  }
-
-  private func fetchData() {
-    //downloadService.fetch { result in
-
-    // }
-    // викликати функцію фетчу і в якшо результат позитивний поставити isAppInstalled = true
-
-  }
-
   init(downloadService: DownloadService) {
     self.downloadService = downloadService
-    checkAppState()
+    //checkAppState()
   }
 
+//  private func checkAppState() {
+//    if !isAppInstalled {
+//      downloadService.checkTheDownload { [weak self] downloadResult in
+//        guard let strongSelf = self else { return }
+//        switch downloadResult {
+//        case .success(_):
+//          strongSelf.isAppInstalled = true
+//        case .failure(_):
+//          print("Check the Internet Connection and relaunch the App")
+//          strongSelf.isAppInstalled = false
+//        }
+//      }
+//    }
+//  }
 }
