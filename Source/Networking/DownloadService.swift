@@ -27,6 +27,8 @@ protocol DownloadServiceType {
   //func fetchUIImageArray() with logic of stickerpack // буду повертати юайімеджі 1)в залежноті від стікерпаку
   //  private var images: [ImageMO] = []                                             2) кількість карток/2
   //                                                                                 3) зарандомити
+  //  на вході функції потрібно вказати назву стікепарку і кількість карточок в левелі щоб повернути рандомні карточки
+  // передивитись логіку з попередньої апки
   //  func fetchdata() {
   //  var fetchResultController: NSFetchedResultsController<ImageMO>
   //  let fetchRequest: NSFetchRequest<ImageMO> = ImageMO.fetchRequest()
@@ -128,6 +130,5 @@ class DownloadService: DownloadServiceType {
         completion(Result.failure(DownloadServiceError.ninthError))
       }
     }
-
   }
 }
