@@ -24,7 +24,30 @@ enum DownloadServiceError: Error {
 
 protocol DownloadServiceType {
   func checkTheDownload(completion: @escaping (Result<Bool, Error>) -> Void)
-  //func fetchUIImageArray() with logic of stickerpack
+  //func fetchUIImageArray() with logic of stickerpack // буду повертати юайімеджі 1)в залежноті від стікерпаку
+  //  private var images: [ImageMO] = []                                             2) кількість карток/2
+  //                                                                                 3) зарандомити
+  //  func fetchdata() {
+  //  var fetchResultController: NSFetchedResultsController<ImageMO>
+  //  let fetchRequest: NSFetchRequest<ImageMO> = ImageMO.fetchRequest()
+  //  let sortDescriptor = NSSortDescriptor(key: "name", ascending: true)
+  //  fetchRequest.sortDescriptors = [sortDescriptor]
+  //  if let appDelegate = (UIApplication.shared.delegate as? AppDelegate) {
+  //  let context = appDelegate.persistentContainer.viewContext
+  //  fetchResultController = NSFetchedResultsController(fetchRequest: fetchRequest,
+  //  managedObjectContext: context,
+  //  sectionNameKeyPath: nil,
+  //  cacheName: nil)
+  //  do {
+  //  try fetchResultController.performFetch()
+  //  if let fetchedObjects = fetchResultController.fetchedObjects {
+  //  images = fetchedObjects
+  //  }
+  //  } catch {
+  //  print(error)
+  //  }
+  //  }
+  //  }
 }
 
 class DownloadService: DownloadServiceType {

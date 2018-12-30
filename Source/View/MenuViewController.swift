@@ -20,10 +20,8 @@ class MenuViewController: UIViewController {
 
   override func viewDidLoad() {
     super.viewDidLoad()
-    // print in console images from Core Data 46.26 video
     setupView()
     observeViewModel()
-    fetchImageData()
   }
 
   private func observeViewModel() {
@@ -31,7 +29,7 @@ class MenuViewController: UIViewController {
       guard let strongSelf = self else { return }
       if error == nil {
         DispatchQueue.main.async {
-          strongSelf.startAnimating()
+          strongSelf.stopAnimating()
         }
       } else {
         DispatchQueue.main.async {
@@ -57,9 +55,5 @@ class MenuViewController: UIViewController {
 
   private func setupView() {
     activityIndicatorView.isHidden = true
-  }
-
-  private func fetchImageData() {
-
   }
 }

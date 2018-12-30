@@ -6,7 +6,8 @@
 //  Copyright © 2018 Yurii Tsymbala. All rights reserved.
 //
 
-import Foundation
+import UIKit
+import CoreData
 
 class MenuViewModel {
 
