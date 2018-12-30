@@ -10,6 +10,7 @@ import UIKit
 
 class MenuViewController: UIViewController {
 
+  @IBOutlet private weak var activityIndicatorView: UIActivityIndicatorView!
   private var viewModel: MenuViewModel!
 
   convenience init(viewModel: MenuViewModel) {
@@ -19,21 +20,46 @@ class MenuViewController: UIViewController {
 
   override func viewDidLoad() {
     super.viewDidLoad()
+    // print in console images from Core Data 46.26 video
+    setupView()
+    observeViewModel()
+    fetchImageData()
+  }
 
-    viewModel.checkAppState { (isInstalled, error) in
+  private func observeViewModel() {
+    viewModel.checkAppState { [weak self] (_, error) in
+      guard let strongSelf = self else { return }
       if error == nil {
-        if isInstalled {
-         print("Succesfully downloaded images")
-         // UIActivityIndicatorView.islala = false
-           //userIteraction.deactivate = false
+        DispatchQueue.main.async {
+          strongSelf.startAnimating()
         }
       } else {
-      // UIActivityIndicatorView.islala = true
-        //userIteraction.deactivate = true
+        DispatchQueue.main.async {
+          strongSelf.startAnimating()
+        }
       }
-
-
     }
-    // print in console images from Core Data 46.26 video
+  }
+
+  private func startAnimating() {
+    activityIndicatorView.isHidden = false
+    activityIndicatorView.startAnimating()
+    // виконується багато разів
+    //userIteraction.deactivate = true
+  }
+
+  private func stopAnimating() {
+    activityIndicatorView.stopAnimating()
+    activityIndicatorView.isHidden = true
+    //userIteraction.deactivate = false
+    // showAlert()     print("Succesfully downloaded images")
+  }
+
+  private func setupView() {
+    activityIndicatorView.isHidden = true
+  }
+
+  private func fetchImageData() {
+
   }
 }

@@ -8,7 +8,6 @@
 
 import Foundation
 
-
 class MenuViewModel {
 
   private let userDefaultsServive: UserDefaultsService

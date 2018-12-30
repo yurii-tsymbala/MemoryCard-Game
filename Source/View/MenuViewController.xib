@@ -12,6 +12,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MenuViewController" customModule="MemoryCard_Game" customModuleProvider="target">
             <connections>
+                <outlet property="activityIndicatorView" destination="8W9-Kg-eKo" id="Lv5-Cm-Tqq"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -19,7 +20,16 @@
         <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="8W9-Kg-eKo">
+                    <rect key="frame" x="177.5" y="323.5" width="20" height="20"/>
+                </activityIndicatorView>
+            </subviews>
             <color key="backgroundColor" red="1" green="0.33803475357009627" blue="0.43434570784998494" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="8W9-Kg-eKo" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="asw-5f-mu3"/>
+                <constraint firstItem="8W9-Kg-eKo" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="thH-Gt-DYf"/>
+            </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
         </view>
     </objects>

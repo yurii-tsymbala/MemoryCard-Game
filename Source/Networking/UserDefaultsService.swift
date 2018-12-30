@@ -29,21 +29,5 @@ final class UserDefaultsService {
 
   init(downloadService: DownloadService) {
     self.downloadService = downloadService
-    //checkAppState()
   }
-
-//  private func checkAppState() {
-//    if !isAppInstalled {
-//      downloadService.checkTheDownload { [weak self] downloadResult in
-//        guard let strongSelf = self else { return }
-//        switch downloadResult {
-//        case .success(_):
-//          strongSelf.isAppInstalled = true
-//        case .failure(_):
-//          print("Check the Internet Connection and relaunch the App")
-//          strongSelf.isAppInstalled = false
-//        }
-//      }
-//    }
-//  }
 }
