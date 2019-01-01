@@ -9,14 +9,12 @@
 import UIKit
 
 class MenuViewController: UIViewController {
-
+  @IBOutlet private weak var scoresStackView: UIStackView!
   @IBOutlet private weak var coinLabel: UILabel!
   @IBOutlet private weak var coinImageView: UIImageView!
-  @IBOutlet private weak var scoresStackView: UIStackView!
-  @IBOutlet private weak var levelsCollectionView: UICollectionView!
   @IBOutlet private weak var activityIndicatorView: UIActivityIndicatorView!
-
-  @IBOutlet weak var stickerPackpickerView: UIPickerView!
+  @IBOutlet private weak var stickerPackpickerView: UIPickerView!
+  @IBOutlet private weak var levelsCollectionView: UICollectionView!
   private var viewModel: MenuViewModel!
 
   convenience init(viewModel: MenuViewModel) {
@@ -31,7 +29,8 @@ class MenuViewController: UIViewController {
   }
 
   private func observeViewModel() {
-    viewModel.checkAppState { [weak self] (_, error) in
+    viewModel.checkAppState { [weak self] (_, error) in  //повна дічь, логіки тут не має бути, тільки наглядання і виконання юайних функцій
+      // алерт також має викликатись по сигналу з вюмоделі, здається вже таке писав в тестовому проекті на бітбакеті  notes-on-mvvm
       guard let strongSelf = self else { return }
       if error == nil {
         DispatchQueue.main.async {
@@ -49,17 +48,33 @@ class MenuViewController: UIViewController {
     activityIndicatorView.isHidden = false
     activityIndicatorView.startAnimating()
     // виконується багато разів
-    //userIteraction.deactivate = true
+    //userIteraction всіх юайних елементів вирубати.deactivate = true
   }
 
   private func stopAnimating() {
     activityIndicatorView.stopAnimating()
     activityIndicatorView.isHidden = true
-    //userIteraction.deactivate = false
+    //userIteraction всіх юайних елементів включити
     // showAlert()     print("Succesfully downloaded images")
   }
 
   private func setupView() {
     activityIndicatorView.isHidden = true
+  }
+}
+
+extension MenuViewController: UICollectionViewDataSource {
+  func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+
+  }
+
+  func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+
+  }
+
+
+}
+extension MenuViewController: UICollectionViewDelegate {
+  func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
   }
 }
