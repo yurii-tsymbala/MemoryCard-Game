@@ -10,7 +10,13 @@ import UIKit
 
 class MenuViewController: UIViewController {
 
+  @IBOutlet private weak var coinLabel: UILabel!
+  @IBOutlet private weak var coinImageView: UIImageView!
+  @IBOutlet private weak var scoresStackView: UIStackView!
+  @IBOutlet private weak var levelsCollectionView: UICollectionView!
   @IBOutlet private weak var activityIndicatorView: UIActivityIndicatorView!
+
+  @IBOutlet weak var stickerPackpickerView: UIPickerView!
   private var viewModel: MenuViewModel!
 
   convenience init(viewModel: MenuViewModel) {
