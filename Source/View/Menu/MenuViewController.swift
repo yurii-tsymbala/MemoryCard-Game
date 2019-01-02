@@ -14,6 +14,8 @@ class MenuViewController: UIViewController {
   @IBOutlet private weak var coinImageView: UIImageView!
   @IBOutlet private weak var activityIndicatorView: UIActivityIndicatorView!
   @IBOutlet private weak var stickerPackpickerView: UIPickerView!
+
+  @IBOutlet private weak var stickerPackLabel: UILabel!
   @IBOutlet private weak var levelsCollectionView: UICollectionView!
   private var viewModel: MenuViewModel!
 

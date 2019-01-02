@@ -20,6 +20,8 @@
 		4B7CE64121D7916C003C41C0 /* UserDefaultsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B7CE64021D7916C003C41C0 /* UserDefaultsService.swift */; };
 		4B7CE64421D7AAC0003C41C0 /* Source.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4B7CE64221D7AAC0003C41C0 /* Source.xcdatamodeld */; };
 		4B7CE64621D7B2AF003C41C0 /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B7CE64521D7B2AF003C41C0 /* Image.swift */; };
+		4BE83DA421DCCC1F008EB54C /* LevelCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BE83DA221DCCC1F008EB54C /* LevelCollectionViewCell.swift */; };
+		4BE83DA521DCCC1F008EB54C /* LevelCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4BE83DA321DCCC1F008EB54C /* LevelCollectionViewCell.xib */; };
 		BAE8C409EE87AA94592920D3 /* Pods_MemoryCard_Game.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EB288057AC4A898B1C133F17 /* Pods_MemoryCard_Game.framework */; };
 /* End PBXBuildFile section */
 
@@ -39,6 +41,8 @@
 		4B7CE64021D7916C003C41C0 /* UserDefaultsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsService.swift; sourceTree = "<group>"; };
 		4B7CE64321D7AAC0003C41C0 /* Source.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Source.xcdatamodel; sourceTree = "<group>"; };
 		4B7CE64521D7B2AF003C41C0 /* Image.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Image.swift; sourceTree = "<group>"; };
+		4BE83DA221DCCC1F008EB54C /* LevelCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelCollectionViewCell.swift; sourceTree = "<group>"; };
+		4BE83DA321DCCC1F008EB54C /* LevelCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LevelCollectionViewCell.xib; sourceTree = "<group>"; };
 		923444A86E1E6347E0FBD788 /* Pods-MemoryCard Game.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MemoryCard Game.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MemoryCard Game/Pods-MemoryCard Game.debug.xcconfig"; sourceTree = "<group>"; };
 		D7AB777653EAD645DAFED71F /* Pods-MemoryCard Game.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MemoryCard Game.release.xcconfig"; path = "Pods/Target Support Files/Pods-MemoryCard Game/Pods-MemoryCard Game.release.xcconfig"; sourceTree = "<group>"; };
 		EB288057AC4A898B1C133F17 /* Pods_MemoryCard_Game.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MemoryCard_Game.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -163,6 +167,8 @@
 			children = (
 				4B56AF0421D820A0001DB774 /* MenuViewController.swift */,
 				4B56AF0521D820A0001DB774 /* MenuViewController.xib */,
+				4BE83DA221DCCC1F008EB54C /* LevelCollectionViewCell.swift */,
+				4BE83DA321DCCC1F008EB54C /* LevelCollectionViewCell.xib */,
 			);
 			path = Menu;
 			sourceTree = "<group>";
@@ -239,6 +245,7 @@
 				4B6925DB21D6D62300127D66 /* LaunchScreen.storyboard in Resources */,
 				4B6925D821D6D62300127D66 /* Assets.xcassets in Resources */,
 				4B56AF0721D820A0001DB774 /* MenuViewController.xib in Resources */,
+				4BE83DA521DCCC1F008EB54C /* LevelCollectionViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -309,6 +316,7 @@
 				4B7CE64421D7AAC0003C41C0 /* Source.xcdatamodeld in Sources */,
 				4B7CE64121D7916C003C41C0 /* UserDefaultsService.swift in Sources */,
 				4B08EE2321D6DB1A00D09E94 /* MenuViewModel.swift in Sources */,
+				4BE83DA421DCCC1F008EB54C /* LevelCollectionViewCell.swift in Sources */,
 				4B7CE64621D7B2AF003C41C0 /* Image.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -17,6 +17,7 @@
                 <outlet property="coinLabel" destination="G4z-26-wp8" id="a9q-UL-KxB"/>
                 <outlet property="levelsCollectionView" destination="Oav-Wh-Ys8" id="tr1-mP-y0Y"/>
                 <outlet property="scoresStackView" destination="2vD-Ta-isg" id="lgR-Vc-zzw"/>
+                <outlet property="stickerPackLabel" destination="gPf-EH-0wx" id="3H3-Yk-Tu3"/>
                 <outlet property="stickerPackpickerView" destination="lFt-fF-QbH" id="Rhn-4A-FoU"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -30,7 +31,7 @@
                     <rect key="frame" x="169" y="315" width="37" height="37"/>
                 </activityIndicatorView>
                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="Oav-Wh-Ys8">
-                    <rect key="frame" x="0.0" y="271" width="375" height="396"/>
+                    <rect key="frame" x="0.0" y="293" width="375" height="374"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="FVA-7X-dlq">
                         <size key="itemSize" width="50" height="50"/>
@@ -39,38 +40,51 @@
                         <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                     </collectionViewFlowLayout>
                 </collectionView>
-                <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lFt-fF-QbH">
-                    <rect key="frame" x="179" y="35" width="176" height="216"/>
+                <pickerView contentMode="scaleToFill" verticalCompressionResistancePriority="749" translatesAutoresizingMaskIntoConstraints="NO" id="lFt-fF-QbH">
+                    <rect key="frame" x="193.5" y="80.5" width="162.5" height="173.5"/>
                 </pickerView>
                 <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="2vD-Ta-isg">
-                    <rect key="frame" x="16" y="89" width="135.5" height="128"/>
+                    <rect key="frame" x="16" y="89" width="150" height="150"/>
                     <subviews>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="aGv-TJ-s53">
-                            <rect key="frame" x="0.0" y="0.0" width="110" height="128"/>
+                            <rect key="frame" x="0.0" y="0.0" width="120" height="150"/>
                         </imageView>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="50" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="G4z-26-wp8">
-                            <rect key="frame" x="115" y="0.0" width="20.5" height="128"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <rect key="frame" x="125" y="0.0" width="25" height="150"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="20"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
                     </subviews>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="150" id="7IH-h5-Pb3"/>
+                        <constraint firstAttribute="height" constant="150" id="QwB-xx-0cz"/>
+                    </constraints>
                 </stackView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="StickerPack: Cars" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gPf-EH-0wx">
+                    <rect key="frame" x="184" y="60" width="172" height="20.5"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <color key="backgroundColor" red="1" green="0.33803475357009627" blue="0.43434570784998494" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
+                <constraint firstItem="gPf-EH-0wx" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="184" id="4SP-5g-2PK"/>
                 <constraint firstItem="Oav-Wh-Ys8" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="63f-hd-3XE"/>
                 <constraint firstItem="2vD-Ta-isg" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="69" id="AXE-Ps-HiM"/>
-                <constraint firstItem="Oav-Wh-Ys8" firstAttribute="top" secondItem="lFt-fF-QbH" secondAttribute="bottom" constant="20" id="F4b-cu-YPo"/>
+                <constraint firstItem="Oav-Wh-Ys8" firstAttribute="top" secondItem="lFt-fF-QbH" secondAttribute="bottom" constant="39" id="F4b-cu-YPo"/>
+                <constraint firstItem="lFt-fF-QbH" firstAttribute="top" secondItem="gPf-EH-0wx" secondAttribute="bottom" id="Szj-nG-jk3"/>
                 <constraint firstItem="2vD-Ta-isg" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="16" id="TBM-HN-2KH"/>
                 <constraint firstItem="Oav-Wh-Ys8" firstAttribute="top" secondItem="2vD-Ta-isg" secondAttribute="bottom" constant="54" id="UxV-dE-TgA"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="lFt-fF-QbH" secondAttribute="trailing" constant="20" id="Yzd-tg-mcL"/>
                 <constraint firstItem="8W9-Kg-eKo" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="asw-5f-mu3"/>
-                <constraint firstItem="lFt-fF-QbH" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="15" id="b7v-Cj-7Cj"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="gPf-EH-0wx" secondAttribute="trailing" constant="19" id="cPa-5a-bfR"/>
                 <constraint firstItem="Oav-Wh-Ys8" firstAttribute="bottom" secondItem="fnl-2z-Ty3" secondAttribute="bottom" id="cX1-Jy-MTJ"/>
                 <constraint firstItem="lFt-fF-QbH" firstAttribute="leading" secondItem="2vD-Ta-isg" secondAttribute="trailing" constant="27.5" id="gDs-VD-Vgf"/>
+                <constraint firstItem="gPf-EH-0wx" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="40" id="jUP-5k-08s"/>
                 <constraint firstItem="Oav-Wh-Ys8" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="n4Y-m7-FgY"/>
                 <constraint firstItem="8W9-Kg-eKo" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="thH-Gt-DYf"/>
+                <constraint firstAttribute="trailing" secondItem="lFt-fF-QbH" secondAttribute="trailing" constant="19" id="wqM-DP-ab8"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <point key="canvasLocation" x="138.40000000000001" y="126.38680659670166"/>
