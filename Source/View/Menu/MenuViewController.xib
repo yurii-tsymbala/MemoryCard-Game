@@ -33,7 +33,7 @@
                     <color key="color" red="0.22145633068985648" green="1" blue="0.13348737557746648" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                 </activityIndicatorView>
                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="Oav-Wh-Ys8">
-                    <rect key="frame" x="0.0" y="293" width="375" height="374"/>
+                    <rect key="frame" x="0.0" y="552" width="375" height="115"/>
                     <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="FVA-7X-dlq">
                         <size key="itemSize" width="50" height="50"/>
                         <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -74,10 +74,10 @@
                 <constraint firstItem="gPf-EH-0wx" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="184" id="4SP-5g-2PK"/>
                 <constraint firstItem="Oav-Wh-Ys8" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="63f-hd-3XE"/>
                 <constraint firstItem="2vD-Ta-isg" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="69" id="AXE-Ps-HiM"/>
-                <constraint firstItem="Oav-Wh-Ys8" firstAttribute="top" secondItem="lFt-fF-QbH" secondAttribute="bottom" constant="39" id="F4b-cu-YPo"/>
+                <constraint firstItem="Oav-Wh-Ys8" firstAttribute="top" secondItem="lFt-fF-QbH" secondAttribute="bottom" constant="298" id="F4b-cu-YPo"/>
                 <constraint firstItem="lFt-fF-QbH" firstAttribute="top" secondItem="gPf-EH-0wx" secondAttribute="bottom" id="Szj-nG-jk3"/>
                 <constraint firstItem="2vD-Ta-isg" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="16" id="TBM-HN-2KH"/>
-                <constraint firstItem="Oav-Wh-Ys8" firstAttribute="top" secondItem="2vD-Ta-isg" secondAttribute="bottom" constant="54" id="UxV-dE-TgA"/>
+                <constraint firstItem="Oav-Wh-Ys8" firstAttribute="top" secondItem="2vD-Ta-isg" secondAttribute="bottom" constant="313" id="UxV-dE-TgA"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="gPf-EH-0wx" secondAttribute="trailing" constant="19" id="cPa-5a-bfR"/>
                 <constraint firstItem="Oav-Wh-Ys8" firstAttribute="bottom" secondItem="fnl-2z-Ty3" secondAttribute="bottom" id="cX1-Jy-MTJ"/>
                 <constraint firstItem="lFt-fF-QbH" firstAttribute="leading" secondItem="2vD-Ta-isg" secondAttribute="trailing" constant="27.5" id="gDs-VD-Vgf"/>

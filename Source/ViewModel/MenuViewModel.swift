@@ -8,8 +8,12 @@
 
 import UIKit
 import CoreData
+import RxSwift
+import RxCocoa
 
 class MenuViewModel {
+
+  var startAnimating = PublishSubject<Void>()
 
   // тут будуть всякі змінні для нагляданння
 
@@ -21,13 +25,15 @@ class MenuViewModel {
   }
 
   private func observingDownloadStatus() {
-    userDefaultsServive.checkDownloadStatus { downloadStatus in
+    userDefaultsServive.checkDownloadStatus { [weak self] downloadStatus in
+      guard let strongSelf = self else {return}
       switch downloadStatus {
-      case .success(let isDownloaded):
-        print("Success!")
-        print(isDownloaded)  // виключити крутіння індикатора + додати привітальний текст
+      case .success(_):
+          strongSelf.startAnimating.onCompleted()
       case .failure(let error):
-        print(error)     // виключити крутіння індикатор + додати текст щоб перезавантажити картинки
+        strongSelf.startAnimating.onCompleted()
+        print(error)
+        // show alert for user with button to execute observingDownloadStatus()
       }
     }
   }

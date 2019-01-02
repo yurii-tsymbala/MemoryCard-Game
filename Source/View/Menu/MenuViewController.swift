@@ -8,6 +8,8 @@
 
 import UIKit
 import CoreData
+import RxSwift
+import RxCocoa
 
 class MenuViewController: UIViewController {
   @IBOutlet private weak var scoresStackView: UIStackView!
@@ -19,6 +21,7 @@ class MenuViewController: UIViewController {
   @IBOutlet private weak var levelsCollectionView: UICollectionView!
   private var viewModel: MenuViewModel!
   private let levelCollectionViewCellId = "LevelCollectionViewCell"
+  private let disposeBag = DisposeBag()
 
   convenience init(viewModel: MenuViewModel) {
     self.init()
@@ -32,29 +35,32 @@ class MenuViewController: UIViewController {
   }
 
   private func observeViewModel() {
-    // має наглядатись чи крутитись/зупинятись індикатору, презентати алерти
-//    viewModel.showAlert = { [weak self] alertViewModel in
-//      self?.showAlert(withViewModel: alertViewModel)
-//    }
+    viewModel.startAnimating.subscribe(onNext: { [weak self] in
+      guard let strongSelf = self else {return}
+      strongSelf.startAnimating()
+      }, onCompleted: { [weak self] in
+        guard let strongSelf = self else {return}
+        strongSelf.stopAnimating()
+    }).disposed(by: disposeBag)
+    //    viewModel.showAlert = { [weak self] alertViewModel in
+    //      self?.showAlert(withViewModel: alertViewModel)
+    //    }
   }
 
   private func showAlert(withViewModel viewModel: AlertViewModel ) {
-   // router.showAlert(viewModel, inViewController: self)
+    // router.showAlert(viewModel, inViewController: self)
   }
 
   private func startAnimating() {
     activityIndicatorView.isHidden = false
     activityIndicatorView.startAnimating()
     userIteractionEnabled(isEnabled: false)
-    //userIteraction всіх юайних елементів вирубати.deactivate = true
   }
 
   private func stopAnimating() {
     activityIndicatorView.stopAnimating()
     activityIndicatorView.isHidden = true
     userIteractionEnabled(isEnabled: true)
-    //userIteraction всіх юайних елементів включити
-    // showAlert()     print("Succesfully downloaded images")
   }
 
   private func userIteractionEnabled(isEnabled: Bool) {
@@ -64,8 +70,9 @@ class MenuViewController: UIViewController {
   }
 
   private func setupView() {
+    setupActivityIndicator()
     setupCollectionView()
-    activityIndicatorView.isHidden = true
+    setupPickerView()
   }
 
   private func setupCollectionView() {
@@ -73,6 +80,15 @@ class MenuViewController: UIViewController {
     levelsCollectionView.dataSource = self
     let levelCellNib = UINib(nibName: levelCollectionViewCellId, bundle: nil)
     levelsCollectionView.register(levelCellNib, forCellWithReuseIdentifier: levelCollectionViewCellId)
+  }
+
+  private func setupActivityIndicator() {
+    startAnimating()
+  }
+
+  private func setupPickerView() {
+    stickerPackpickerView.delegate = self
+    stickerPackpickerView.dataSource = self
   }
 }
 
@@ -89,5 +105,21 @@ extension MenuViewController: UICollectionViewDataSource {
 }
 extension MenuViewController: UICollectionViewDelegate {
   func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+  }
+}
+
+extension MenuViewController: UIPickerViewDataSource {
+  func numberOfComponents(in pickerView: UIPickerView) -> Int {
+    return 1
+  }
+
+  func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+    return 3
+  }
+}
+
+extension MenuViewController: UIPickerViewDelegate {
+  func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+
   }
 }
