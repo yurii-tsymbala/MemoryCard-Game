@@ -33,6 +33,13 @@ class MenuViewController: UIViewController {
 
   private func observeViewModel() {
     // має наглядатись чи крутитись/зупинятись індикатору, презентати алерти
+//    viewModel.showAlert = { [weak self] alertViewModel in
+//      self?.showAlert(withViewModel: alertViewModel)
+//    }
+  }
+
+  private func showAlert(withViewModel viewModel: AlertViewModel ) {
+   // router.showAlert(viewModel, inViewController: self)
   }
 
   private func startAnimating() {
