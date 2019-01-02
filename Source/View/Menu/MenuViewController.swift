@@ -32,26 +32,28 @@ class MenuViewController: UIViewController {
   }
 
   private func observeViewModel() {
-  // має наглядатись чи крутитись/зупинятись індикатору, презентати алерти
+    // має наглядатись чи крутитись/зупинятись індикатору, презентати алерти
   }
 
   private func startAnimating() {
     activityIndicatorView.isHidden = false
     activityIndicatorView.startAnimating()
-    scoresStackView.isUserInteractionEnabled = false
-    stickerPackpickerView.isUserInteractionEnabled = false
-    levelsCollectionView.isUserInteractionEnabled = false
+    userIteractionEnabled(isEnabled: false)
     //userIteraction всіх юайних елементів вирубати.deactivate = true
   }
 
   private func stopAnimating() {
     activityIndicatorView.stopAnimating()
     activityIndicatorView.isHidden = true
-    scoresStackView.isUserInteractionEnabled = true
-    stickerPackpickerView.isUserInteractionEnabled = true
-    levelsCollectionView.isUserInteractionEnabled = true
+    userIteractionEnabled(isEnabled: true)
     //userIteraction всіх юайних елементів включити
     // showAlert()     print("Succesfully downloaded images")
+  }
+
+  private func userIteractionEnabled(isEnabled: Bool) {
+    scoresStackView.isUserInteractionEnabled = isEnabled
+    stickerPackpickerView.isUserInteractionEnabled = isEnabled
+    levelsCollectionView.isUserInteractionEnabled = isEnabled
   }
 
   private func setupView() {

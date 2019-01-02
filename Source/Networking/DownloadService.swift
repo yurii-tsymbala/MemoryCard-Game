@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 enum DownloadServiceError: Error {
   case firstError
@@ -24,67 +25,15 @@ enum DownloadServiceError: Error {
 
 protocol DownloadServiceType {
   func confirmTheDownload(completion: @escaping (Result<Bool, Error>) -> Void)
-  //func fetchUIImageArray() with logic of stickerpack // буду повертати юайімеджі 1)в залежноті від стікерпаку
+  func fetchdata() //func fetchUIImageArray() with logic of stickerpack // буду повертати юайімеджі 1)в залежноті від стікерпаку
   //  private var images: [ImageMO] = []                                             2) кількість карток/2
   //                                                                                 3) зарандомити
   //  на вході функції потрібно вказати назву стікепарку і кількість карточок в левелі щоб повернути рандомні карточки
   // передивитись логіку з попередньої апки
-  //  func fetchdata() {
-  //  var fetchResultController: NSFetchedResultsController<ImageMO>
-  //  let fetchRequest: NSFetchRequest<ImageMO> = ImageMO.fetchRequest()
-  //  let sortDescriptor = NSSortDescriptor(key: "name", ascending: true)
-  //  fetchRequest.sortDescriptors = [sortDescriptor]
-  //  if let appDelegate = (UIApplication.shared.delegate as? AppDelegate) {
-  //  let context = appDelegate.persistentContainer.viewContext
-  //  fetchResultController = NSFetchedResultsController(fetchRequest: fetchRequest,
-  //  managedObjectContext: context,
-  //  sectionNameKeyPath: nil,
-  //  cacheName: nil)
-  //  do {
-  //  try fetchResultController.performFetch()
-  //  if let fetchedObjects = fetchResultController.fetchedObjects {
-  //  images = fetchedObjects
-  //  }
-  //  } catch {
-  //  print(error)
-  //  }
-  //  }
-  //  }
-
-//  private func fetchdata() {  //  приклад як витягувати
-//  var images: [ImageMO] = []
-//  var fetchResultController: NSFetchedResultsController<ImageMO>
-//  let fetchRequest: NSFetchRequest<ImageMO> = ImageMO.fetchRequest()
-//  let sortDescriptor = NSSortDescriptor(key: "name", ascending: true)
-//  fetchRequest.sortDescriptors = [sortDescriptor]
-//  if let appDelegate = (UIApplication.shared.delegate as? AppDelegate) {
-//  let context = appDelegate.persistentContainer.viewContext
-//  fetchResultController = NSFetchedResultsController(fetchRequest: fetchRequest,
-//  managedObjectContext: context,
-//  sectionNameKeyPath: nil,
-//  cacheName: nil)
-//  do {
-//  try fetchResultController.performFetch()
-//  if let fetchedObjects = fetchResultController.fetchedObjects {
-//  images = fetchedObjects
-//  print(images[0].name)
-//  print(images[0].image)
-//  }
-//  } catch {
-//  print(error)
-//  }
-//  }
-//  }
-
 
 }
 
 class DownloadService: DownloadServiceType {
-
-  private func fetchData() {
-
-  }
-
   private var images: [Image]!
   private var imagesData = [ImageData]()
 
@@ -104,6 +53,23 @@ class DownloadService: DownloadServiceType {
       case .failure(let error):
         completion(Result.failure(error))
       }
+    }
+  }
+
+  func fetchdata() { // переробити з  комплішеном
+    var images: [ImageMO]
+    guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return}
+    let managedContext = appDelegate.persistentContainer.viewContext
+    let fetchRequest:NSFetchRequest<ImageMO> = ImageMO.fetchRequest()
+    let sortDescriptor = NSSortDescriptor(key: "name", ascending: true)
+    fetchRequest.sortDescriptors = [sortDescriptor]
+    do {
+      images = try managedContext.fetch(fetchRequest)
+      for image in images {
+        print(image.name ?? 0)
+      }
+    } catch let error as NSError {
+      print("Could not fetch. \(error), \(error.userInfo)")
     }
   }
 
