@@ -23,7 +23,7 @@ enum DownloadServiceError: Error {
 }
 
 protocol DownloadServiceType {
-  func checkTheDownload(completion: @escaping (Result<Bool, Error>) -> Void)
+  func confirmTheDownload(completion: @escaping (Result<Bool, Error>) -> Void)
   //func fetchUIImageArray() with logic of stickerpack // буду повертати юайімеджі 1)в залежноті від стікерпаку
   //  private var images: [ImageMO] = []                                             2) кількість карток/2
   //                                                                                 3) зарандомити
@@ -50,14 +50,45 @@ protocol DownloadServiceType {
   //  }
   //  }
   //  }
+
+//  private func fetchdata() {  //  приклад як витягувати
+//  var images: [ImageMO] = []
+//  var fetchResultController: NSFetchedResultsController<ImageMO>
+//  let fetchRequest: NSFetchRequest<ImageMO> = ImageMO.fetchRequest()
+//  let sortDescriptor = NSSortDescriptor(key: "name", ascending: true)
+//  fetchRequest.sortDescriptors = [sortDescriptor]
+//  if let appDelegate = (UIApplication.shared.delegate as? AppDelegate) {
+//  let context = appDelegate.persistentContainer.viewContext
+//  fetchResultController = NSFetchedResultsController(fetchRequest: fetchRequest,
+//  managedObjectContext: context,
+//  sectionNameKeyPath: nil,
+//  cacheName: nil)
+//  do {
+//  try fetchResultController.performFetch()
+//  if let fetchedObjects = fetchResultController.fetchedObjects {
+//  images = fetchedObjects
+//  print(images[0].name)
+//  print(images[0].image)
+//  }
+//  } catch {
+//  print(error)
+//  }
+//  }
+//  }
+
+
 }
 
 class DownloadService: DownloadServiceType {
 
+  private func fetchData() {
+
+  }
+
   private var images: [Image]!
   private var imagesData = [ImageData]()
 
-  func checkTheDownload(completion: @escaping (Result<Bool, Error>) -> Void) {
+  func confirmTheDownload(completion: @escaping (Result<Bool, Error>) -> Void) {
     fetchDataFromJSON { [weak self] fetchDataResult in
       guard let strongSelf = self else { return }
       switch fetchDataResult {
@@ -95,8 +126,6 @@ class DownloadService: DownloadServiceType {
                 strongSelf.imagesData.append(imageData)
                 if strongSelf.imagesData.count == 92 {
                   completion(Result.success(strongSelf.imagesData))
-                } else {
-                  completion(Result.failure(DownloadServiceError.eleventhError))
                 }
               }
             }
@@ -124,8 +153,11 @@ class DownloadService: DownloadServiceType {
           imageManagedObject.name = image.name
           imageManagedObject.image = image.data
         }
-        appDelegate.saveContext()
-        completion(Result.success(true))
+        if let error = appDelegate.saveContext() {
+          completion(Result.failure(error))
+        } else {
+          completion(Result.success(true))
+        }
       } else {
         completion(Result.failure(DownloadServiceError.ninthError))
       }

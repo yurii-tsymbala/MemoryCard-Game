@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 class MenuViewController: UIViewController {
   @IBOutlet private weak var scoresStackView: UIStackView!
@@ -31,32 +32,24 @@ class MenuViewController: UIViewController {
   }
 
   private func observeViewModel() {
-    viewModel.checkAppState { [weak self] (_, error) in  //повна дічь, логіки тут не має бути, тільки наглядання і виконання юайних функцій
-      // алерт також має викликатись по сигналу з вюмоделі, здається вже таке писав в тестовому проекті на бітбакеті  notes-on-mvvm
-      guard let strongSelf = self else { return }
-      if error == nil {
-        DispatchQueue.main.async {
-          strongSelf.stopAnimating()
-          print("ff")
-        }
-      } else {
-        DispatchQueue.main.async {
-          strongSelf.startAnimating()
-        }
-      }
-    }
+  // має наглядатись чи крутитись/зупинятись індикатору, презентати алерти
   }
 
   private func startAnimating() {
     activityIndicatorView.isHidden = false
     activityIndicatorView.startAnimating()
-    // виконується багато разів
+    scoresStackView.isUserInteractionEnabled = false
+    stickerPackpickerView.isUserInteractionEnabled = false
+    levelsCollectionView.isUserInteractionEnabled = false
     //userIteraction всіх юайних елементів вирубати.deactivate = true
   }
 
   private func stopAnimating() {
     activityIndicatorView.stopAnimating()
     activityIndicatorView.isHidden = true
+    scoresStackView.isUserInteractionEnabled = true
+    stickerPackpickerView.isUserInteractionEnabled = true
+    levelsCollectionView.isUserInteractionEnabled = true
     //userIteraction всіх юайних елементів включити
     // showAlert()     print("Succesfully downloaded images")
   }

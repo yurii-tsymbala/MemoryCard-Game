@@ -11,30 +11,24 @@ import CoreData
 
 class MenuViewModel {
 
+  // тут будуть всякі змінні для нагляданння
+
   private let userDefaultsServive: UserDefaultsService
 
   init(userDefaultsServive: UserDefaultsService) {
     self.userDefaultsServive = userDefaultsServive
+    observingDownloadStatus()
   }
-  
-  func checkAppState(completion: @escaping (_ appState: Bool, _ error: Error?) -> Void ) {
-    if !userDefaultsServive.isAppInstalled {
-      userDefaultsServive.downloadService.checkTheDownload { [weak self] downloadResult in
-        guard let strongSelf = self else { return }
-        switch downloadResult {
-        case .success(_):
-          strongSelf.userDefaultsServive.isAppInstalled = true
-          //activityIndicatorIsRolling = false // комент знизу // у вюконтролері непотрібна функція
-          completion(true,nil)
-        case .failure(let error):
-          completion(false,error)
-          // виконуєтся багато разів в консолі // треба видалити функцію з вюконтролера де перевірка майже та сама
-          //activityIndicatorisRolling = active
-          strongSelf.userDefaultsServive.isAppInstalled = false
-        }
+
+  private func observingDownloadStatus() {
+    userDefaultsServive.checkDownloadStatus { downloadStatus in
+      switch downloadStatus {
+      case .success(let isDownloaded):
+        print("Success!")
+        print(isDownloaded)  // виключити крутіння індикатора + додати привітальний текст
+      case .failure(let error):
+        print(error)     // виключити крутіння індикатор + додати текст щоб перезавантажити картинки
       }
     }
   }
-
-  // показувати алерт якшо нема інтернету - шоб викачались зображення в кордату
 }

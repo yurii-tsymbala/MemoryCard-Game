@@ -29,7 +29,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   }
 
   func applicationWillTerminate(_ application: UIApplication) {
-    self.saveContext()
+    if let error = self.saveContext() {
+      print(error)
+    }
   }
 
   // MARK: - Core Data stack
@@ -46,16 +48,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
   // MARK: - Core Data Saving support
 
-  func saveContext () {
+  func saveContext () -> NSError? {
+    var nsError: NSError?
     let context = persistentContainer.viewContext
     if context.hasChanges {
       do {
         try context.save()
       } catch {
-        let nserror = error as NSError
-        fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
+        nsError = error as NSError
+        fatalError("Unresolved error \(nsError!), \(nsError!.userInfo)")
       }
     }
+    return nsError
   }
 }
 
