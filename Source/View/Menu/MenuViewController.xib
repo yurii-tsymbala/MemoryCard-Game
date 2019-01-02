@@ -27,12 +27,13 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="8W9-Kg-eKo">
-                    <rect key="frame" x="169" y="315" width="37" height="37"/>
+                <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="8W9-Kg-eKo">
+                    <rect key="frame" x="177.5" y="323.5" width="20" height="20"/>
+                    <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <color key="color" red="0.22145633068985648" green="1" blue="0.13348737557746648" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                 </activityIndicatorView>
                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="Oav-Wh-Ys8">
                     <rect key="frame" x="0.0" y="293" width="375" height="374"/>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="FVA-7X-dlq">
                         <size key="itemSize" width="50" height="50"/>
                         <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -77,13 +78,13 @@
                 <constraint firstItem="lFt-fF-QbH" firstAttribute="top" secondItem="gPf-EH-0wx" secondAttribute="bottom" id="Szj-nG-jk3"/>
                 <constraint firstItem="2vD-Ta-isg" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="16" id="TBM-HN-2KH"/>
                 <constraint firstItem="Oav-Wh-Ys8" firstAttribute="top" secondItem="2vD-Ta-isg" secondAttribute="bottom" constant="54" id="UxV-dE-TgA"/>
-                <constraint firstItem="8W9-Kg-eKo" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="asw-5f-mu3"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="gPf-EH-0wx" secondAttribute="trailing" constant="19" id="cPa-5a-bfR"/>
                 <constraint firstItem="Oav-Wh-Ys8" firstAttribute="bottom" secondItem="fnl-2z-Ty3" secondAttribute="bottom" id="cX1-Jy-MTJ"/>
                 <constraint firstItem="lFt-fF-QbH" firstAttribute="leading" secondItem="2vD-Ta-isg" secondAttribute="trailing" constant="27.5" id="gDs-VD-Vgf"/>
+                <constraint firstItem="8W9-Kg-eKo" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="gb5-7T-nYL"/>
+                <constraint firstItem="8W9-Kg-eKo" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="ixl-B5-rOJ"/>
                 <constraint firstItem="gPf-EH-0wx" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="40" id="jUP-5k-08s"/>
                 <constraint firstItem="Oav-Wh-Ys8" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="n4Y-m7-FgY"/>
-                <constraint firstItem="8W9-Kg-eKo" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="thH-Gt-DYf"/>
                 <constraint firstAttribute="trailing" secondItem="lFt-fF-QbH" secondAttribute="trailing" constant="19" id="wqM-DP-ab8"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>

@@ -37,6 +37,7 @@ class MenuViewController: UIViewController {
       if error == nil {
         DispatchQueue.main.async {
           strongSelf.stopAnimating()
+          print("ff")
         }
       } else {
         DispatchQueue.main.async {
@@ -82,7 +83,6 @@ extension MenuViewController: UICollectionViewDataSource {
     let cell = levelsCollectionView.dequeueReusableCell(withReuseIdentifier: levelCollectionViewCellId, for: indexPath) as! LevelCollectionViewCell
     return cell
   }
-
 
 }
 extension MenuViewController: UICollectionViewDelegate {
