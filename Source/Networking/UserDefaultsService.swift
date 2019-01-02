@@ -29,7 +29,6 @@ final class UserDefaultsService {
 
   func checkDownloadStatus(completion: @escaping (Result<Bool, Error>) -> Void) { // провіряти цю функцію кожен раз при загрузці вюмодельки
     if !isDownloadCompleted {
-       completion(Result.success(false))
       downloadService.confirmTheDownload { [weak self] downloadServiceResult in
         guard let strongSelf = self else { return }
         switch downloadServiceResult {
