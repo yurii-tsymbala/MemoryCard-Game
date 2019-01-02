@@ -17,6 +17,7 @@ class MenuViewController: UIViewController {
   @IBOutlet private weak var stickerPackLabel: UILabel!
   @IBOutlet private weak var levelsCollectionView: UICollectionView!
   private var viewModel: MenuViewModel!
+  private let levelCollectionViewCellId = "LevelCollectionViewCell"
 
   convenience init(viewModel: MenuViewModel) {
     self.init()
@@ -60,11 +61,13 @@ class MenuViewController: UIViewController {
   }
 
   private func setupView() {
+    setupCollectionView()
     activityIndicatorView.isHidden = true
   }
 
   private func setupCollectionView() {
-    let levelCollectionViewCellId = "LevelCollectionViewCell"
+    levelsCollectionView.delegate = self
+    levelsCollectionView.dataSource = self
     let levelCellNib = UINib(nibName: levelCollectionViewCellId, bundle: nil)
     levelsCollectionView.register(levelCellNib, forCellWithReuseIdentifier: levelCollectionViewCellId)
   }
@@ -72,11 +75,12 @@ class MenuViewController: UIViewController {
 
 extension MenuViewController: UICollectionViewDataSource {
   func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-   return 1
+    return 1
   }
 
   func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-
+    let cell = levelsCollectionView.dequeueReusableCell(withReuseIdentifier: levelCollectionViewCellId, for: indexPath) as! LevelCollectionViewCell
+    return cell
   }
 
 
