@@ -14,7 +14,6 @@ class MenuViewController: UIViewController {
   @IBOutlet private weak var coinImageView: UIImageView!
   @IBOutlet private weak var activityIndicatorView: UIActivityIndicatorView!
   @IBOutlet private weak var stickerPackpickerView: UIPickerView!
-
   @IBOutlet private weak var stickerPackLabel: UILabel!
   @IBOutlet private weak var levelsCollectionView: UICollectionView!
   private var viewModel: MenuViewModel!
@@ -63,11 +62,17 @@ class MenuViewController: UIViewController {
   private func setupView() {
     activityIndicatorView.isHidden = true
   }
+
+  private func setupCollectionView() {
+    let levelCollectionViewCellId = "LevelCollectionViewCell"
+    let levelCellNib = UINib(nibName: levelCollectionViewCellId, bundle: nil)
+    levelsCollectionView.register(levelCellNib, forCellWithReuseIdentifier: levelCollectionViewCellId)
+  }
 }
 
 extension MenuViewController: UICollectionViewDataSource {
   func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-
+   return 1
   }
 
   func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
