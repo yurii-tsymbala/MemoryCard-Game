@@ -18,9 +18,9 @@ class MenuViewController: UIViewController {
   @IBOutlet private weak var stickerPackpickerView: UIPickerView!
   @IBOutlet private weak var stickerPackLabel: UILabel!
   @IBOutlet private weak var levelsCollectionView: UICollectionView!
-  private var viewModel: MenuViewModel!
   private let levelCollectionViewCellId = "LevelCollectionViewCell"
   private let disposeBag = DisposeBag()
+  private var viewModel: MenuViewModel!
 
   convenience init(viewModel: MenuViewModel) {
     self.init()

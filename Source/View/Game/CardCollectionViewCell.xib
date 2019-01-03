@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="CardCollectionViewCell" id="up6-Ed-eva" userLabel="CardCollectionViewCell" customClass="CardCollectionViewCell" customModule="MemoryCard_Game" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="75" height="75"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                <rect key="frame" x="0.0" y="0.0" width="75" height="75"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="peA-5a-OJG">
+                        <rect key="frame" x="0.0" y="0.0" width="75" height="75"/>
+                    </imageView>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="0background" translatesAutoresizingMaskIntoConstraints="NO" id="dOo-xN-9rJ">
+                        <rect key="frame" x="0.0" y="0.0" width="75" height="75"/>
+                    </imageView>
+                </subviews>
+            </view>
+            <constraints>
+                <constraint firstItem="peA-5a-OJG" firstAttribute="top" secondItem="up6-Ed-eva" secondAttribute="top" id="2c0-aM-egU"/>
+                <constraint firstAttribute="trailing" secondItem="peA-5a-OJG" secondAttribute="trailing" id="6wz-4q-jI6"/>
+                <constraint firstAttribute="bottom" secondItem="peA-5a-OJG" secondAttribute="bottom" id="Qmu-RL-8Q6"/>
+                <constraint firstItem="dOo-xN-9rJ" firstAttribute="top" secondItem="up6-Ed-eva" secondAttribute="top" id="XbF-Wb-ZBA"/>
+                <constraint firstItem="peA-5a-OJG" firstAttribute="leading" secondItem="up6-Ed-eva" secondAttribute="leading" id="XfV-5t-7vy"/>
+                <constraint firstAttribute="trailing" secondItem="dOo-xN-9rJ" secondAttribute="trailing" id="g57-KU-10b"/>
+                <constraint firstItem="dOo-xN-9rJ" firstAttribute="leading" secondItem="up6-Ed-eva" secondAttribute="leading" id="jSB-Pz-G5l"/>
+                <constraint firstAttribute="bottom" secondItem="dOo-xN-9rJ" secondAttribute="bottom" id="kgr-ZO-sOG"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="7UW-rH-tQF"/>
+            <connections>
+                <outlet property="backgroundCard" destination="dOo-xN-9rJ" id="7Dq-wK-Mdd"/>
+                <outlet property="photoCard" destination="peA-5a-OJG" id="zcd-oU-nUJ"/>
+            </connections>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <image name="0background" width="409.60000610351562" height="409.60000610351562"/>
+    </resources>
+</document>
