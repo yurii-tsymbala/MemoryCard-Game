@@ -30,12 +30,12 @@ class MenuViewController: UIViewController {
 
   override func viewDidLoad() {
     super.viewDidLoad()
-    viewModel.observingDownloadStatus()
     setupView()
     observeViewModel()
   }
 
   private func observeViewModel() {
+    viewModel.observingDownloadStatus()
     viewModel.startAnimating.subscribe(onNext: { [weak self] in
       guard let strongSelf = self else {return}
       strongSelf.startAnimating()
