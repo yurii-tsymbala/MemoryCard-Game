@@ -9,17 +9,18 @@
 import UIKit
 
 class LevelCollectionViewCell: UICollectionViewCell {
+  @IBOutlet private weak var levelScoreLabel: UILabel!
+  @IBOutlet private weak var levelTimeLabel: UILabel!
+  @IBOutlet private weak var levelCardsAmountLabel: UILabel!
+  @IBOutlet private weak var levelCardImageView: UIImageView!
 
-  @IBOutlet weak var levelScoreLabel: UILabel!
-
-  @IBOutlet weak var levelTimeLabel: UILabel!
-
-  @IBOutlet weak var levelCardsAmountLabel: UILabel!
-
-  @IBOutlet weak var levelCardImageView: UIImageView!
   override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+
     }
+
+  func setupView() {
+
+  }
 
 }
