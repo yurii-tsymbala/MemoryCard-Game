@@ -10,7 +10,14 @@ import UIKit
 
 class LevelCollectionViewCell: UICollectionViewCell {
 
-    override func awakeFromNib() {
+  @IBOutlet weak var levelScoreLabel: UILabel!
+
+  @IBOutlet weak var levelTimeLabel: UILabel!
+
+  @IBOutlet weak var levelCardsAmountLabel: UILabel!
+
+  @IBOutlet weak var levelCardImageView: UIImageView!
+  override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
     }
