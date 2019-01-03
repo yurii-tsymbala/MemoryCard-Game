@@ -21,7 +21,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   }
 
   private func setupView() {
-    let menuViewController = MenuViewController(viewModel: MenuViewModel(userDefaultsServive: UserDefaultsService(downloadService: DownloadService())))
+    let menuViewController = MenuViewController(viewModel: MenuViewModel(userDefaultsServive: UserDefaultsService(downloadService: DownloadService()), pickerViewModel: PickerViewModel()))
     let navigationController = UINavigationController(rootViewController: menuViewController)
     window?.rootViewController = navigationController
     window?.makeKeyAndVisible()

@@ -10,6 +10,7 @@
 		4B08EE1D21D6DAD900D09E94 /* Level.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B08EE1C21D6DAD900D09E94 /* Level.swift */; };
 		4B08EE2321D6DB1A00D09E94 /* MenuViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B08EE2221D6DB1A00D09E94 /* MenuViewModel.swift */; };
 		4B08EE2521D6DB4100D09E94 /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B08EE2421D6DB4100D09E94 /* Result.swift */; };
+		4B166E9921DE42BF00D76CA8 /* PickerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B166E9821DE42BF00D76CA8 /* PickerViewModel.swift */; };
 		4B3E934821DD0CAC00A53F03 /* AlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B3E934721DD0CAC00A53F03 /* AlertViewController.swift */; };
 		4B3E934A21DD0CE800A53F03 /* AlertViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B3E934921DD0CE800A53F03 /* AlertViewModel.swift */; };
 		4B56AF0621D820A0001DB774 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B56AF0421D820A0001DB774 /* MenuViewController.swift */; };
@@ -31,6 +32,7 @@
 		4B08EE1C21D6DAD900D09E94 /* Level.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Level.swift; sourceTree = "<group>"; };
 		4B08EE2221D6DB1A00D09E94 /* MenuViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewModel.swift; sourceTree = "<group>"; };
 		4B08EE2421D6DB4100D09E94 /* Result.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
+		4B166E9821DE42BF00D76CA8 /* PickerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerViewModel.swift; sourceTree = "<group>"; };
 		4B3E934721DD0CAC00A53F03 /* AlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertViewController.swift; sourceTree = "<group>"; };
 		4B3E934921DD0CE800A53F03 /* AlertViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertViewModel.swift; sourceTree = "<group>"; };
 		4B56AF0421D820A0001DB774 /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
@@ -105,6 +107,7 @@
 			children = (
 				4B08EE2221D6DB1A00D09E94 /* MenuViewModel.swift */,
 				4B3E934921DD0CE800A53F03 /* AlertViewModel.swift */,
+				4B166E9821DE42BF00D76CA8 /* PickerViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -329,6 +332,7 @@
 				4B6925D121D6D62100127D66 /* AppDelegate.swift in Sources */,
 				4B56AF0621D820A0001DB774 /* MenuViewController.swift in Sources */,
 				4B7CE64421D7AAC0003C41C0 /* Source.xcdatamodeld in Sources */,
+				4B166E9921DE42BF00D76CA8 /* PickerViewModel.swift in Sources */,
 				4B3E934821DD0CAC00A53F03 /* AlertViewController.swift in Sources */,
 				4B7CE64121D7916C003C41C0 /* UserDefaultsService.swift in Sources */,
 				4B08EE2321D6DB1A00D09E94 /* MenuViewModel.swift in Sources */,

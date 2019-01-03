@@ -12,7 +12,7 @@ import RxSwift
 import RxCocoa
 
 class MenuViewController: UIViewController {
-  @IBOutlet private weak var scoresStackView: UIStackView!
+  //@IBOutlet private weak var scoresStackView: UIStackView!
   @IBOutlet private weak var coinLabel: UILabel!
   @IBOutlet private weak var coinImageView: UIImageView!
   @IBOutlet private weak var activityIndicatorView: UIActivityIndicatorView!
@@ -51,34 +51,17 @@ class MenuViewController: UIViewController {
         strongSelf.showAlert(withViewModel: alertViewModel)
       }
     }).disposed(by: disposeBag)
-  }
-
-  private func showAlert(withViewModel alertViewModel: AlertViewModel ) {
-    self.viewModel.showAlert(alertViewModel, inViewController: self)
-  }
-
-  private func startAnimating() {
-    activityIndicatorView.isHidden = false
-    activityIndicatorView.startAnimating()
-    userIteractionEnabled(isEnabled: false)
-  }
-
-  private func stopAnimating() {
-    activityIndicatorView.stopAnimating()
-    activityIndicatorView.isHidden = true
-    userIteractionEnabled(isEnabled: true)
-  }
-
-  private func userIteractionEnabled(isEnabled: Bool) {
-    scoresStackView.isUserInteractionEnabled = isEnabled
-    stickerPackpickerView.isUserInteractionEnabled = isEnabled
-    levelsCollectionView.isUserInteractionEnabled = isEnabled
+    viewModel.pickerViewModel.currentStickerPackName.subscribe(onNext: { [weak self] currentStickerPackName in
+      guard let strongSelf = self else {return}
+      strongSelf.stickerPackLabel.text = currentStickerPackName
+    }).disposed(by: disposeBag)
   }
 
   private func setupView() {
     setupActivityIndicator()
     setupCollectionView()
     setupPickerView()
+    setupStackView()
   }
 
   private func setupCollectionView() {
@@ -95,6 +78,33 @@ class MenuViewController: UIViewController {
   private func setupPickerView() {
     stickerPackpickerView.delegate = self
     stickerPackpickerView.dataSource = self
+  }
+
+  private func setupStackView() {
+  coinImageView.contentMode = .scaleAspectFill
+  coinImageView.image = UIImage(named: "coin")
+  }
+
+  private func startAnimating() {
+    activityIndicatorView.isHidden = false
+    activityIndicatorView.startAnimating()
+    userIteractionEnabled(isEnabled: false)
+  }
+
+  private func stopAnimating() {
+    activityIndicatorView.stopAnimating()
+    activityIndicatorView.isHidden = true
+    userIteractionEnabled(isEnabled: true)
+  }
+
+  private func userIteractionEnabled(isEnabled: Bool) {
+    //scoresStackView.isUserInteractionEnabled = isEnabled
+    stickerPackpickerView.isUserInteractionEnabled = isEnabled
+    levelsCollectionView.isUserInteractionEnabled = isEnabled
+  }
+
+  private func showAlert(withViewModel alertViewModel: AlertViewModel ) {
+    self.viewModel.showAlert(alertViewModel, inViewController: self)
   }
 }
 
@@ -120,12 +130,24 @@ extension MenuViewController: UIPickerViewDataSource {
   }
 
   func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-    return 3
+    return viewModel.pickerViewModel.numberOfRowsForPicker
+  }
+
+  func pickerView(_ pickerView: UIPickerView, widthForComponent component: Int) -> CGFloat {
+    return viewModel.pickerViewModel.viewSizeForRow
+  }
+
+  func pickerView(_ pickerView: UIPickerView, rowHeightForComponent component: Int) -> CGFloat {
+    return viewModel.pickerViewModel.viewSizeForRow
+  }
+
+  func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
+    return viewModel.pickerViewModel.setupViewForRow(indexOfTheRow: row)
   }
 }
 
 extension MenuViewController: UIPickerViewDelegate {
   func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-
+    viewModel.pickerViewModel.sendInfoToLabel(indexOfTheRow: row)
   }
 }

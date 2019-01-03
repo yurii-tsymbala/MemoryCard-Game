@@ -13,22 +13,20 @@ import RxCocoa
 
 class MenuViewModel {
 
-  var startAnimating = PublishSubject<Void>()
-
-  var showAlertView = PublishSubject<AlertViewModel>()
-
-  var showAlert: ((AlertViewModel) -> Void)?
-
+  private let userDefaultsServive: UserDefaultsService
+  let pickerViewModel: PickerViewModel
   private let alertViewModel = AlertViewModel(title: "Bad Internet Connection",
                                               message: "Please reload the application")
 
   // тут будуть всякі змінні для нагляданння
+  var startAnimating = PublishSubject<Void>()
+  var showAlertView = PublishSubject<AlertViewModel>()
+  //var showAlert: ((AlertViewModel) -> Void)?
 
-  private let userDefaultsServive: UserDefaultsService
-
-  init(userDefaultsServive: UserDefaultsService) {
+  init(userDefaultsServive: UserDefaultsService,
+       pickerViewModel: PickerViewModel) {
     self.userDefaultsServive = userDefaultsServive
-    //observingDownloadStatus()
+    self.pickerViewModel = pickerViewModel
   }
 
    func observingDownloadStatus() {
@@ -37,7 +35,7 @@ class MenuViewModel {
       switch downloadStatus {
       case .success(_):
         strongSelf.startAnimating.onCompleted()
-      case .failure(let error):
+      case .failure(_):
           strongSelf.startAnimating.onCompleted()
           strongSelf.showAlertView.onNext(strongSelf.alertViewModel) // не працює
           // show alert for user with button to execute observingDownloadStatus()
@@ -45,7 +43,7 @@ class MenuViewModel {
     }
   }
 
-  func showAlert(_ alertViewModel: AlertViewModel, inViewController: UIViewController) { //замість Router
+  func showAlert(_ alertViewModel: AlertViewModel, inViewController: UIViewController) {
     let alert = UIAlertController(title: alertViewModel.title,
                                   message: alertViewModel.message,
                                   preferredStyle: .alert)
