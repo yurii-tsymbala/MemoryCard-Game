@@ -12,7 +12,6 @@ import RxSwift
 import RxCocoa
 
 class GameViewController: UIViewController {
-
   @IBOutlet private weak var cardCollectionView: UICollectionView!
   @IBOutlet private weak var timerLabel: UILabel!
   @IBOutlet private weak var flipCountLabel: UILabel!
@@ -38,7 +37,8 @@ class GameViewController: UIViewController {
   }
 
   private func setupView() {
-  setupCollectionView()
+    setupCollectionView()
+    setupMenuButton()
   }
 
   private func setupCollectionView() {
@@ -48,6 +48,14 @@ class GameViewController: UIViewController {
     cardCollectionView.register(cardCellNib, forCellWithReuseIdentifier: cardCollectionViewCellId)
   }
 
+  private func setupMenuButton() {
+    menuButton.addTarget(self, action: #selector(pressedMenuButton), for: .touchUpInside)
+  }
+
+  @objc
+  private func pressedMenuButton() {
+
+  }
 
 
 }

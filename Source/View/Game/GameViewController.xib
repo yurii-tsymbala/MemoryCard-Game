@@ -25,12 +25,11 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" distribution="fillProportionally" spacing="89" translatesAutoresizingMaskIntoConstraints="NO" id="vJR-op-601">
-                    <rect key="frame" x="0.0" y="20" width="374.5" height="38"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="vJR-op-601">
+                    <rect key="frame" x="0.0" y="20" width="375" height="38"/>
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h9P-Je-WHE">
-                            <rect key="frame" x="0.0" y="0.0" width="52" height="38"/>
+                            <rect key="frame" x="0.0" y="0.0" width="99" height="38"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <fontDescription key="fontDescription" type="system" pointSize="21"/>
                             <state key="normal" title="Menu">
@@ -38,14 +37,14 @@
                             </state>
                         </button>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Time : 0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dMa-UQ-aUW">
-                            <rect key="frame" x="141" y="0.0" width="73.5" height="38"/>
+                            <rect key="frame" x="99" y="0.0" width="140.5" height="38"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <fontDescription key="fontDescription" type="system" pointSize="21"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="Tries : 0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ee9-Th-rzV">
-                            <rect key="frame" x="303.5" y="0.0" width="71" height="38"/>
+                            <rect key="frame" x="239.5" y="0.0" width="135.5" height="38"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <fontDescription key="fontDescription" type="system" pointSize="21"/>
                             <nil key="textColor"/>
@@ -53,9 +52,8 @@
                         </label>
                     </subviews>
                 </stackView>
-                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFill" fixedFrame="YES" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="2Yl-2d-Efr">
+                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="2Yl-2d-Efr">
                     <rect key="frame" x="0.0" y="66" width="375" height="601"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="zi1-QW-inX">
                         <size key="itemSize" width="75" height="75"/>
@@ -67,6 +65,15 @@
                 </collectionView>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="vJR-op-601" secondAttribute="trailing" id="3Um-Ye-THA"/>
+                <constraint firstItem="2Yl-2d-Efr" firstAttribute="top" secondItem="vJR-op-601" secondAttribute="bottom" constant="8" id="BZ8-Ew-IPP"/>
+                <constraint firstItem="2Yl-2d-Efr" firstAttribute="bottom" secondItem="fnl-2z-Ty3" secondAttribute="bottom" id="C9D-Gl-9tA"/>
+                <constraint firstItem="vJR-op-601" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="K6T-22-gGP"/>
+                <constraint firstItem="2Yl-2d-Efr" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="Rt2-Av-5Ra"/>
+                <constraint firstItem="2Yl-2d-Efr" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="j62-hL-k9W"/>
+                <constraint firstItem="vJR-op-601" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="nSC-6A-gt9"/>
+            </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <point key="canvasLocation" x="140" y="121.88905547226388"/>
         </view>
