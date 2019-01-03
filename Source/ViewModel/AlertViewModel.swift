@@ -11,14 +11,6 @@ import UIKit
 struct AlertViewModel {
   let title: String
   let message: String
-
-  func showAlert(_ alertViewModel: AlertViewModel, inViewController: UIViewController) { //замість Router
-    let alert = UIAlertController(title: alertViewModel.title,
-                                  message: alertViewModel.message,
-                                  preferredStyle: .alert)
-    alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
-    inViewController.present(alert, animated: true, completion: nil)
-  }
 }
 
 

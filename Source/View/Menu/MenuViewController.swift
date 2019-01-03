@@ -30,6 +30,7 @@ class MenuViewController: UIViewController {
 
   override func viewDidLoad() {
     super.viewDidLoad()
+    viewModel.observingDownloadStatus()
     setupView()
     observeViewModel()
   }
@@ -40,15 +41,20 @@ class MenuViewController: UIViewController {
       strongSelf.startAnimating()
       }, onCompleted: { [weak self] in
         guard let strongSelf = self else {return}
-        strongSelf.stopAnimating()
+        DispatchQueue.main.async {
+          strongSelf.stopAnimating()
+        }
     }).disposed(by: disposeBag)
-    //    viewModel.showAlert = { [weak self] alertViewModel in
-    //      self?.showAlert(withViewModel: alertViewModel)
-    //    }
+    viewModel.showAlertView.subscribe(onNext: { [weak self] alertViewModel in
+      guard let strongSelf = self else {return}
+      DispatchQueue.main.async {
+        strongSelf.showAlert(withViewModel: alertViewModel)
+      }
+    }).disposed(by: disposeBag)
   }
 
-  private func showAlert(withViewModel viewModel: AlertViewModel ) {
-    // router.showAlert(viewModel, inViewController: self)
+  private func showAlert(withViewModel alertViewModel: AlertViewModel ) {
+    self.viewModel.showAlert(alertViewModel, inViewController: self)
   }
 
   private func startAnimating() {
