@@ -12,11 +12,10 @@ import RxSwift
 import RxCocoa
 
 class MenuViewModel {
-
   private let userDefaultsServive: UserDefaultsService
-  let pickerViewModel: PickerViewModel
   private let alertViewModel = AlertViewModel(title: "Bad Internet Connection",
                                               message: "Please reload the application")
+   let pickerViewModel: PickerViewModel
 
   // тут будуть всякі змінні для нагляданння
   var startAnimating = PublishSubject<Void>()
