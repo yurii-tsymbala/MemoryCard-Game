@@ -54,6 +54,10 @@ class MenuViewController: UIViewController {
       guard let strongSelf = self else {return}
       strongSelf.stickerPackLabel.text = currentStickerPackName
     }).disposed(by: disposeBag)
+    viewModel.startGame.subscribe(onNext: { [weak self] gameViewModel in
+      guard let strongSelf = self else {return}
+     strongSelf.navigateToGame(withViewModel: gameViewModel)
+    }).disposed(by: disposeBag)
   }
 
   private func setupView() {
@@ -80,8 +84,8 @@ class MenuViewController: UIViewController {
   }
 
   private func setupStackView() {
-  coinImageView.contentMode = .scaleAspectFill
-  coinImageView.image = UIImage(named: "coin")
+    coinImageView.contentMode = .scaleAspectFill
+    coinImageView.image = UIImage(named: "coin")
   }
 
   private func startAnimating() {
@@ -101,8 +105,13 @@ class MenuViewController: UIViewController {
     levelsCollectionView.isUserInteractionEnabled = isEnabled
   }
 
-  private func showAlert(withViewModel alertViewModel: AlertViewModel ) {
+  private func showAlert(withViewModel alertViewModel: AlertViewModel) {
     self.viewModel.showAlert(alertViewModel, inViewController: self)
+  }
+
+  private func navigateToGame(withViewModel viewModel: GameViewModel) {
+    let gameViewController = GameViewController(viewModel: viewModel)
+    navigationController?.pushViewController(gameViewController, animated: true)
   }
 }
 
@@ -119,6 +128,7 @@ extension MenuViewController: UICollectionViewDataSource {
 }
 extension MenuViewController: UICollectionViewDelegate {
   func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+    viewModel.selectLevel(atIndex: indexPath.row)
   }
 }
 

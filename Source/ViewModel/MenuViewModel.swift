@@ -21,6 +21,7 @@ class MenuViewModel {
   // тут будуть всякі змінні для нагляданння
   var startAnimating = PublishSubject<Void>()
   var showAlertView = PublishSubject<AlertViewModel>()
+  var startGame = PublishSubject<GameViewModel>()
   //var showAlert: ((AlertViewModel) -> Void)?
 
   init(userDefaultsServive: UserDefaultsService,
@@ -29,19 +30,39 @@ class MenuViewModel {
     self.pickerViewModel = pickerViewModel
   }
 
-   func observingDownloadStatus() {
+  func observingDownloadStatus() {
     userDefaultsServive.checkDownloadStatus { [weak self] downloadStatus in
       guard let strongSelf = self else {return}
       switch downloadStatus {
       case .success(_):
         strongSelf.startAnimating.onCompleted()
       case .failure(_):
-          strongSelf.startAnimating.onCompleted()
-          strongSelf.showAlertView.onNext(strongSelf.alertViewModel) // не працює
-          // show alert for user with button to execute observingDownloadStatus()
+        strongSelf.startAnimating.onCompleted()
+        strongSelf.showAlertView.onNext(strongSelf.alertViewModel) // не працює
+        // show alert for user with button to execute observingDownloadStatus()
       }
     }
   }
+
+  func selectLevel(atIndex index: Int) {
+    startGame.onNext(GameViewModel(level: Level(cardsNumber: convertIndexToLevel(withIndex: index),
+                                                stickerPackName: pickerViewModel.currentStickerPackName.value)))
+  }
+
+  private func convertIndexToLevel(withIndex index: Int) -> Int {
+    if index == 0 {
+      return 4
+    } else if index == 1 {
+      return 8
+    } else {
+      let cardsNumber = 4 * index
+      return cardsNumber
+    }
+  }
+
+//  func getCellViewModel(at index: Int) -> TasksCellViewModel {
+//    return cellViewModels[index]
+//  }
 
   func showAlert(_ alertViewModel: AlertViewModel, inViewController: UIViewController) {
     let alert = UIAlertController(title: alertViewModel.title,

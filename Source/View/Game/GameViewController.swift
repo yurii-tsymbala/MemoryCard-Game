@@ -43,7 +43,7 @@ class GameViewController: UIViewController {
 
   private func setupCollectionView() {
     cardCollectionView.delegate = self
-    cardCollectionView.dataSource = self
+    //cardCollectionView.dataSource = self
     let cardCellNib = UINib(nibName: cardCollectionViewCellId, bundle: nil)
     cardCollectionView.register(cardCellNib, forCellWithReuseIdentifier: cardCollectionViewCellId)
   }
@@ -60,17 +60,17 @@ class GameViewController: UIViewController {
 
 }
 
-extension GameViewController : UICollectionViewDataSource {
-  func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-    <#code#>
-  }
-
-  func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-    <#code#>
-  }
-
-
-}
+//extension GameViewController : UICollectionViewDataSource {
+//  func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+//    <#code#>
+//  }
+//
+//  func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+//    <#code#>
+//  }
+//
+//
+//}
 extension GameViewController: UICollectionViewDelegate {
   func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
 

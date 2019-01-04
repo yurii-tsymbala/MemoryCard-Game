@@ -7,3 +7,8 @@
 //
 
 import Foundation
+
+struct Level {
+  var cardsNumber: Int
+  var stickerPackName: String
+}
