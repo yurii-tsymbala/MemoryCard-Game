@@ -14,7 +14,7 @@
             <connections>
                 <outlet property="cardCollectionView" destination="2Yl-2d-Efr" id="ae4-El-sxa"/>
                 <outlet property="flipCountLabel" destination="Ee9-Th-rzV" id="8jx-dK-k56"/>
-                <outlet property="gameStackView" destination="vJR-op-601" id="UQf-Xj-6Sh"/>
+                <outlet property="gameStackView" destination="vJR-op-601" id="m35-xs-YJh"/>
                 <outlet property="menuButton" destination="h9P-Je-WHE" id="n8f-Pb-jDE"/>
                 <outlet property="timerLabel" destination="dMa-UQ-aUW" id="Fhk-A4-Wds"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
