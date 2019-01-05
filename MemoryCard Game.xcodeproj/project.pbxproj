@@ -11,6 +11,7 @@
 		4B08EE2321D6DB1A00D09E94 /* MenuViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B08EE2221D6DB1A00D09E94 /* MenuViewModel.swift */; };
 		4B08EE2521D6DB4100D09E94 /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B08EE2421D6DB4100D09E94 /* Result.swift */; };
 		4B166E9921DE42BF00D76CA8 /* PickerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B166E9821DE42BF00D76CA8 /* PickerViewModel.swift */; };
+		4B1BC43421E13DE800D3BC12 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B1BC43321E13DE800D3BC12 /* Router.swift */; };
 		4B3A2D8021DE798300CF53B5 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B3A2D7E21DE798300CF53B5 /* GameViewController.swift */; };
 		4B3A2D8121DE798300CF53B5 /* GameViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4B3A2D7F21DE798300CF53B5 /* GameViewController.xib */; };
 		4B3A2D8421DE7C5E00CF53B5 /* CardCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B3A2D8221DE7C5E00CF53B5 /* CardCollectionViewCell.swift */; };
@@ -38,6 +39,7 @@
 		4B08EE2221D6DB1A00D09E94 /* MenuViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewModel.swift; sourceTree = "<group>"; };
 		4B08EE2421D6DB4100D09E94 /* Result.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
 		4B166E9821DE42BF00D76CA8 /* PickerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerViewModel.swift; sourceTree = "<group>"; };
+		4B1BC43321E13DE800D3BC12 /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 		4B3A2D7E21DE798300CF53B5 /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
 		4B3A2D7F21DE798300CF53B5 /* GameViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GameViewController.xib; sourceTree = "<group>"; };
 		4B3A2D8221DE7C5E00CF53B5 /* CardCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -108,6 +110,7 @@
 				4B7CE64221D7AAC0003C41C0 /* Source.xcdatamodeld */,
 				4B7CE64521D7B2AF003C41C0 /* Image.swift */,
 				4B56AF0821D8299C001DB774 /* ImageData.swift */,
+				4B1BC43321E13DE800D3BC12 /* Router.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -345,6 +348,7 @@
 				4B08EE2521D6DB4100D09E94 /* Result.swift in Sources */,
 				4B7CE63F21D78BCE003C41C0 /* DownloadService.swift in Sources */,
 				4B08EE1D21D6DAD900D09E94 /* Level.swift in Sources */,
+				4B1BC43421E13DE800D3BC12 /* Router.swift in Sources */,
 				4B56AF0921D8299C001DB774 /* ImageData.swift in Sources */,
 				4B3E934A21DD0CE800A53F03 /* AlertViewModel.swift in Sources */,
 				4B6925D121D6D62100127D66 /* AppDelegate.swift in Sources */,

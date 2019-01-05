@@ -12,12 +12,11 @@ import RxSwift
 import RxCocoa
 
 class MenuViewModel {
-  private let userDefaultsServive: UserDefaultsService
+  private let userDefaultsService: UserDefaultsService
   private let alertViewModel = AlertViewModel(title: "Bad Internet Connection",
                                               message: "Please reload the application")
-   let pickerViewModel: PickerViewModel
+  let pickerViewModel: PickerViewModel
 
-  // тут будуть всякі змінні для нагляданння
   var startAnimating = PublishSubject<Void>()
   var showAlertView = PublishSubject<AlertViewModel>()
   var startGame = PublishSubject<GameViewModel>()
@@ -25,12 +24,13 @@ class MenuViewModel {
 
   init(userDefaultsServive: UserDefaultsService,
        pickerViewModel: PickerViewModel) {
-    self.userDefaultsServive = userDefaultsServive
+    self.userDefaultsService = userDefaultsServive
     self.pickerViewModel = pickerViewModel
   }
 
   func observingDownloadStatus() {
-    userDefaultsServive.checkDownloadStatus { [weak self] downloadStatus in
+    startAnimating.onNext(())
+    userDefaultsService.checkDownloadStatus { [weak self] downloadStatus in
       guard let strongSelf = self else {return}
       switch downloadStatus {
       case .success(_):
@@ -59,15 +59,8 @@ class MenuViewModel {
     }
   }
 
-//  func getCellViewModel(at index: Int) -> TasksCellViewModel {
-//    return cellViewModels[index]
-//  }
+  //  func getCellViewModel(at index: Int) -> TasksCellViewModel {
+  //    return cellViewModels[index]
+  //  }
 
-  func showAlert(_ alertViewModel: AlertViewModel, inViewController: UIViewController) {
-    let alert = UIAlertController(title: alertViewModel.title,
-                                  message: alertViewModel.message,
-                                  preferredStyle: .alert)
-    alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
-    inViewController.present(alert, animated: true, completion: nil)
-  }
 }

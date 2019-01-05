@@ -14,13 +14,14 @@ import RxCocoa
 class MenuViewController: UIViewController {
   @IBOutlet private weak var coinLabel: UILabel!
   @IBOutlet private weak var coinImageView: UIImageView!
-  @IBOutlet private weak var activityIndicatorView: UIActivityIndicatorView!
   @IBOutlet private weak var stickerPackpickerView: UIPickerView!
   @IBOutlet private weak var stickerPackLabel: UILabel!
   @IBOutlet private weak var levelsCollectionView: UICollectionView!
+  private var myActivityIndicatorView: UIActivityIndicatorView!
   private let levelCollectionViewCellId = "LevelCollectionViewCell"
   private let disposeBag = DisposeBag()
   private var viewModel: MenuViewModel!
+  private var router = Router()
 
   convenience init(viewModel: MenuViewModel) {
     self.init()
@@ -31,22 +32,24 @@ class MenuViewController: UIViewController {
     super.viewDidLoad()
     setupView()
     observeViewModel()
+    viewModel.observingDownloadStatus()
   }
 
   private func observeViewModel() {
-    viewModel.observingDownloadStatus()
     viewModel.startAnimating.subscribe(onNext: { [weak self] in
       guard let strongSelf = self else {return}
+       DispatchQueue.main.async {
       strongSelf.startAnimating()
+      }
       }, onCompleted: { [weak self] in
         guard let strongSelf = self else {return}
         DispatchQueue.main.async {
-          strongSelf.stopAnimating()
+           strongSelf.stopAnimating()
         }
     }).disposed(by: disposeBag)
     viewModel.showAlertView.subscribe(onNext: { [weak self] alertViewModel in
       guard let strongSelf = self else {return}
-      DispatchQueue.main.async {
+       DispatchQueue.main.async {
         strongSelf.showAlert(withViewModel: alertViewModel)
       }
     }).disposed(by: disposeBag)
@@ -56,7 +59,7 @@ class MenuViewController: UIViewController {
     }).disposed(by: disposeBag)
     viewModel.startGame.subscribe(onNext: { [weak self] gameViewModel in
       guard let strongSelf = self else {return}
-     strongSelf.navigateToGame(withViewModel: gameViewModel)
+      strongSelf.navigateToGame(withViewModel: gameViewModel)
     }).disposed(by: disposeBag)
   }
 
@@ -74,10 +77,12 @@ class MenuViewController: UIViewController {
     levelsCollectionView.register(levelCellNib, forCellWithReuseIdentifier: levelCollectionViewCellId)
   }
 
-  private func setupActivityIndicator() {
-    startAnimating()
-  }
 
+  private func setupActivityIndicator() {
+    myActivityIndicatorView = UIActivityIndicatorView(style: UIActivityIndicatorView.Style.whiteLarge)
+    myActivityIndicatorView.center = view.center
+    view.addSubview(myActivityIndicatorView)
+  }
   private func setupPickerView() {
     stickerPackpickerView.delegate = self
     stickerPackpickerView.dataSource = self
@@ -89,14 +94,14 @@ class MenuViewController: UIViewController {
   }
 
   private func startAnimating() {
-    activityIndicatorView.isHidden = false
-    activityIndicatorView.startAnimating()
+    myActivityIndicatorView.isHidden = false
+    myActivityIndicatorView.startAnimating()
     userIteractionEnabled(isEnabled: false)
   }
 
   private func stopAnimating() {
-    activityIndicatorView.stopAnimating()
-    activityIndicatorView.isHidden = true
+    myActivityIndicatorView.stopAnimating()
+    myActivityIndicatorView.isHidden = true
     userIteractionEnabled(isEnabled: true)
   }
 
@@ -106,7 +111,7 @@ class MenuViewController: UIViewController {
   }
 
   private func showAlert(withViewModel alertViewModel: AlertViewModel) {
-    self.viewModel.showAlert(alertViewModel, inViewController: self)
+    router.showAlert(alertViewModel, inViewController: self)
   }
 
   private func navigateToGame(withViewModel viewModel: GameViewModel) {
