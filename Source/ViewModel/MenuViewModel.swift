@@ -20,7 +20,6 @@ class MenuViewModel {
   var startAnimating = PublishSubject<Void>()
   var showAlertView = PublishSubject<AlertViewModel>()
   var startGame = PublishSubject<GameViewModel>()
-  //var showAlert: ((AlertViewModel) -> Void)?
 
   init(userDefaultsServive: UserDefaultsService,
        pickerViewModel: PickerViewModel) {
