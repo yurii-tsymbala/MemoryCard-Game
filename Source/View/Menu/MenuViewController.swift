@@ -36,31 +36,35 @@ class MenuViewController: UIViewController {
   }
 
   private func observeViewModel() {
-    viewModel.startAnimating.subscribe(onNext: { [weak self] in
-      guard let strongSelf = self else {return}
-       DispatchQueue.main.async {
-      strongSelf.startAnimating()
-      }
-      }, onCompleted: { [weak self] in
+    viewModel.startAnimating
+      .subscribe(onNext: { [weak self] in
         guard let strongSelf = self else {return}
         DispatchQueue.main.async {
-           strongSelf.stopAnimating()
+          strongSelf.startAnimating()
         }
-    }).disposed(by: disposeBag)
-    viewModel.showAlertView.subscribe(onNext: { [weak self] alertViewModel in
-      guard let strongSelf = self else {return}
-       DispatchQueue.main.async {
-        strongSelf.showAlert(withViewModel: alertViewModel)
-      }
-    }).disposed(by: disposeBag)
-    viewModel.pickerViewModel.currentStickerPackName.subscribe(onNext: { [weak self] currentStickerPackName in
-      guard let strongSelf = self else {return}
-      strongSelf.stickerPackLabel.text = currentStickerPackName
-    }).disposed(by: disposeBag)
-    viewModel.startGame.subscribe(onNext: { [weak self] gameViewModel in
-      guard let strongSelf = self else {return}
-      strongSelf.navigateToGame(withViewModel: gameViewModel)
-    }).disposed(by: disposeBag)
+        }, onCompleted: { [weak self] in
+          guard let strongSelf = self else {return}
+          DispatchQueue.main.async {
+            strongSelf.stopAnimating()
+          }
+      }).disposed(by: disposeBag)
+    viewModel.showAlertView
+      .subscribe(onNext: { [weak self] alertViewModel in
+        guard let strongSelf = self else {return}
+        DispatchQueue.main.async {
+          strongSelf.showAlert(withViewModel: alertViewModel)
+        }
+      }).disposed(by: disposeBag)
+    viewModel.pickerViewModel.currentStickerPackName
+      .subscribe(onNext: { [weak self] currentStickerPackName in
+        guard let strongSelf = self else {return}
+        strongSelf.stickerPackLabel.text = currentStickerPackName
+      }).disposed(by: disposeBag)
+    viewModel.startGame
+      .subscribe(onNext: { [weak self] gameViewModel in
+        guard let strongSelf = self else {return}
+        strongSelf.navigateToGame(withViewModel: gameViewModel)
+      }).disposed(by: disposeBag)
   }
 
   private func setupView() {

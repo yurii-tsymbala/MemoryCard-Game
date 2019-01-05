@@ -36,8 +36,7 @@ class MenuViewModel {
         strongSelf.startAnimating.onCompleted()
       case .failure(_):
         strongSelf.startAnimating.onCompleted()
-        strongSelf.showAlertView.onNext(strongSelf.alertViewModel) // не працює
-        // show alert for user with button to execute observingDownloadStatus()
+        strongSelf.showAlertView.onNext(strongSelf.alertViewModel)
       }
     }
   }
