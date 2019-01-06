@@ -14,13 +14,28 @@ class LevelCollectionViewCell: UICollectionViewCell {
   @IBOutlet private weak var levelCardsAmountLabel: UILabel!
   @IBOutlet private weak var levelCardImageView: UIImageView!
 
-  override func awakeFromNib() {
-        super.awakeFromNib()
-
+  var viewModel: LevelCellViewModel! {
+    didSet{
+      setupView()
     }
+  }
+
+  override func awakeFromNib() {
+    super.awakeFromNib()
+   setupView()
+  }
+
+  override func prepareForReuse() {
+    super.prepareForReuse()
+    setupView()
+  }
 
   func setupView() {
-
+    levelCardImageView.contentMode = .scaleAspectFit
+    levelCardImageView.image = UIImage(named: "card")
+    levelCardsAmountLabel.text = viewModel.levelCardsNumber
+    levelTimeLabel.text = viewModel.levelTime
+    levelScoreLabel.text = viewModel.leveScore
   }
 
 }

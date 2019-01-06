@@ -24,11 +24,12 @@
 		4B6925D121D6D62100127D66 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B6925D021D6D62100127D66 /* AppDelegate.swift */; };
 		4B6925D821D6D62300127D66 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4B6925D721D6D62300127D66 /* Assets.xcassets */; };
 		4B6925DB21D6D62300127D66 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4B6925D921D6D62300127D66 /* LaunchScreen.storyboard */; };
-		4B69E05E21DF9C1300959155 /* CardCollectionCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B69E05D21DF9C1300959155 /* CardCollectionCellViewModel.swift */; };
+		4B69E05E21DF9C1300959155 /* CardCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B69E05D21DF9C1300959155 /* CardCellViewModel.swift */; };
 		4B7CE63F21D78BCE003C41C0 /* DownloadService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B7CE63E21D78BCE003C41C0 /* DownloadService.swift */; };
 		4B7CE64121D7916C003C41C0 /* UserDefaultsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B7CE64021D7916C003C41C0 /* UserDefaultsService.swift */; };
 		4B7CE64421D7AAC0003C41C0 /* Source.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4B7CE64221D7AAC0003C41C0 /* Source.xcdatamodeld */; };
 		4B7CE64621D7B2AF003C41C0 /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B7CE64521D7B2AF003C41C0 /* Image.swift */; };
+		4BD6F9BB21E1A38A00C4FC11 /* LevelCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BD6F9BA21E1A38A00C4FC11 /* LevelCellViewModel.swift */; };
 		4BE83DA421DCCC1F008EB54C /* LevelCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BE83DA221DCCC1F008EB54C /* LevelCollectionViewCell.swift */; };
 		4BE83DA521DCCC1F008EB54C /* LevelCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4BE83DA321DCCC1F008EB54C /* LevelCollectionViewCell.xib */; };
 		BAE8C409EE87AA94592920D3 /* Pods_MemoryCard_Game.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EB288057AC4A898B1C133F17 /* Pods_MemoryCard_Game.framework */; };
@@ -53,12 +54,13 @@
 		4B6925D021D6D62100127D66 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4B6925D721D6D62300127D66 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4B6925DA21D6D62300127D66 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		4B69E05D21DF9C1300959155 /* CardCollectionCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardCollectionCellViewModel.swift; sourceTree = "<group>"; };
+		4B69E05D21DF9C1300959155 /* CardCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardCellViewModel.swift; sourceTree = "<group>"; };
 		4B7CE63C21D78B10003C41C0 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4B7CE63E21D78BCE003C41C0 /* DownloadService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadService.swift; sourceTree = "<group>"; };
 		4B7CE64021D7916C003C41C0 /* UserDefaultsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsService.swift; sourceTree = "<group>"; };
 		4B7CE64321D7AAC0003C41C0 /* Source.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Source.xcdatamodel; sourceTree = "<group>"; };
 		4B7CE64521D7B2AF003C41C0 /* Image.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Image.swift; sourceTree = "<group>"; };
+		4BD6F9BA21E1A38A00C4FC11 /* LevelCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelCellViewModel.swift; sourceTree = "<group>"; };
 		4BE83DA221DCCC1F008EB54C /* LevelCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelCollectionViewCell.swift; sourceTree = "<group>"; };
 		4BE83DA321DCCC1F008EB54C /* LevelCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LevelCollectionViewCell.xib; sourceTree = "<group>"; };
 		923444A86E1E6347E0FBD788 /* Pods-MemoryCard Game.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MemoryCard Game.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MemoryCard Game/Pods-MemoryCard Game.debug.xcconfig"; sourceTree = "<group>"; };
@@ -122,7 +124,8 @@
 				4B3E934921DD0CE800A53F03 /* AlertViewModel.swift */,
 				4B166E9821DE42BF00D76CA8 /* PickerViewModel.swift */,
 				4B3A2D8621DE7E6500CF53B5 /* GameViewModel.swift */,
-				4B69E05D21DF9C1300959155 /* CardCollectionCellViewModel.swift */,
+				4B69E05D21DF9C1300959155 /* CardCellViewModel.swift */,
+				4BD6F9BA21E1A38A00C4FC11 /* LevelCellViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -353,12 +356,13 @@
 				4B3E934A21DD0CE800A53F03 /* AlertViewModel.swift in Sources */,
 				4B6925D121D6D62100127D66 /* AppDelegate.swift in Sources */,
 				4B3A2D8721DE7E6500CF53B5 /* GameViewModel.swift in Sources */,
-				4B69E05E21DF9C1300959155 /* CardCollectionCellViewModel.swift in Sources */,
+				4B69E05E21DF9C1300959155 /* CardCellViewModel.swift in Sources */,
 				4B56AF0621D820A0001DB774 /* MenuViewController.swift in Sources */,
 				4B7CE64421D7AAC0003C41C0 /* Source.xcdatamodeld in Sources */,
 				4B166E9921DE42BF00D76CA8 /* PickerViewModel.swift in Sources */,
 				4B7CE64121D7916C003C41C0 /* UserDefaultsService.swift in Sources */,
 				4B08EE2321D6DB1A00D09E94 /* MenuViewModel.swift in Sources */,
+				4BD6F9BB21E1A38A00C4FC11 /* LevelCellViewModel.swift in Sources */,
 				4BE83DA421DCCC1F008EB54C /* LevelCollectionViewCell.swift in Sources */,
 				4B3A2D8421DE7C5E00CF53B5 /* CardCollectionViewCell.swift in Sources */,
 				4B7CE64621D7B2AF003C41C0 /* Image.swift in Sources */,

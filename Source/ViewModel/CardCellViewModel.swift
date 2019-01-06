@@ -1,5 +1,5 @@
 //
-//  CardCollectionCellViewModel.swift
+//  CardCellViewModel.swift
 //  MemoryCard Game
 //
 //  Created by Yurii Tsymbala on 1/4/19.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-struct CardCollectionCellViewModel {
+struct CardCellViewModel {
   var cardImageName = ""
   var cardImageData: UIImage
   var isFlipped = false

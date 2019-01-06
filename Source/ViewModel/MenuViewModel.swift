@@ -17,9 +17,17 @@ class MenuViewModel {
                                               message: "Please reload the application")
   let pickerViewModel: PickerViewModel
 
+  private var cellViewModels : [LevelCellViewModel] {
+    return defaultLevelSetup()
+  }
+
   var startAnimating = PublishSubject<Void>()
   var showAlertView = PublishSubject<AlertViewModel>()
   var startGame = PublishSubject<GameViewModel>()
+
+  var numberOfCells: Int {
+    return cellViewModels.count
+  }
 
   init(userDefaultsServive: UserDefaultsService,
        pickerViewModel: PickerViewModel) {
@@ -42,23 +50,23 @@ class MenuViewModel {
   }
 
   func selectLevel(atIndex index: Int) {
-    startGame.onNext(GameViewModel(level: Level(cardsNumber: convertIndexToLevel(withIndex: index),
+    startGame.onNext(GameViewModel(level: Level(cardsNumber: cellViewModels[index].levelCardsNumber,
                                                 stickerPackName: pickerViewModel.currentStickerPackName.value)))
   }
 
-  private func convertIndexToLevel(withIndex index: Int) -> Int {
-    if index == 0 {
-      return 4
-    } else if index == 1 {
-      return 8
-    } else {
-      let cardsNumber = 4 * index
-      return cardsNumber
-    }
+  func getCellViewModel(at index: Int) -> LevelCellViewModel {
+    return cellViewModels[index]
   }
 
-  //  func getCellViewModel(at index: Int) -> TasksCellViewModel {
-  //    return cellViewModels[index]
-  //  }
-
+  private func defaultLevelSetup() -> [LevelCellViewModel] {
+    return [LevelCellViewModel(levelCardsNumber: "4"),
+            LevelCellViewModel(levelCardsNumber: "8"),
+            LevelCellViewModel(levelCardsNumber: "12"),
+            LevelCellViewModel(levelCardsNumber: "16"),
+            LevelCellViewModel(levelCardsNumber: "20"),
+            LevelCellViewModel(levelCardsNumber: "24"),
+            LevelCellViewModel(levelCardsNumber: "28"),
+            LevelCellViewModel(levelCardsNumber: "32")
+    ]
+  }
 }

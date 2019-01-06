@@ -126,15 +126,16 @@ class MenuViewController: UIViewController {
 
 extension MenuViewController: UICollectionViewDataSource {
   func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-    return 1
+    return viewModel.numberOfCells
   }
 
   func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
     let cell = levelsCollectionView.dequeueReusableCell(withReuseIdentifier: levelCollectionViewCellId, for: indexPath) as! LevelCollectionViewCell
+    cell.viewModel = viewModel.getCellViewModel(at: indexPath.row)
     return cell
   }
-
 }
+
 extension MenuViewController: UICollectionViewDelegate {
   func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
     viewModel.selectLevel(atIndex: indexPath.row)

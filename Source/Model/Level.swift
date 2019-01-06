@@ -9,6 +9,6 @@
 import Foundation
 
 struct Level {
-  var cardsNumber: Int
+  var cardsNumber: String
   var stickerPackName: String
 }
