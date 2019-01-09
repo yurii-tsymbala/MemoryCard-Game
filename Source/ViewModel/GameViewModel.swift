@@ -24,6 +24,7 @@ class GameViewModel {
   func generateCardsForLevel(level: Level) {
     print("CARDS GENERATED")// з downloadService функція буде
     // тут має згенеруватись масив cardCells: [CardCellViewModel] = []
+    // релоад дата
   }
 
   func selectCard(atIndex index: Int) {
