@@ -35,6 +35,7 @@ class LevelCollectionViewCell: UICollectionViewCell {
   }
 
   private func cellDesign(cell: UICollectionViewCell) {
+    cell.backgroundColor = #colorLiteral(red: 0.9313516021, green: 0.8973634243, blue: 0.3806837201, alpha: 1)
     cell.layer.cornerRadius = CGFloat.Design.CornerRadius
     cell.layer.borderWidth = CGFloat.Design.BorderWidth
     cell.alpha = 0
