@@ -68,6 +68,7 @@ class MenuViewController: UIViewController {
   }
 
   private func setupView() {
+    view.backgroundColor = ViewConfig.Colors.background
     setupActivityIndicator()
     setupCollectionView()
     setupPickerView()
@@ -77,6 +78,8 @@ class MenuViewController: UIViewController {
   private func setupCollectionView() {
     levelsCollectionView.delegate = self
     levelsCollectionView.dataSource = self
+    view.backgroundColor = UIColor.Backgrounds.mainYellow
+    levelsCollectionView.backgroundColor = UIColor.Backgrounds.mainYellow
     let levelCellNib = UINib(nibName: levelCollectionViewCellId, bundle: nil)
     levelsCollectionView.register(levelCellNib, forCellWithReuseIdentifier: levelCollectionViewCellId)
   }

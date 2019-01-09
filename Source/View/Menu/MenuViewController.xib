@@ -25,10 +25,10 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="Oav-Wh-Ys8">
-                    <rect key="frame" x="0.0" y="205" width="375" height="462"/>
+                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="Oav-Wh-Ys8">
+                    <rect key="frame" x="13" y="205" width="349" height="462"/>
                     <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="FVA-7X-dlq">
-                        <size key="itemSize" width="50" height="50"/>
+                        <size key="itemSize" width="129" height="120"/>
                         <size key="headerReferenceSize" width="0.0" height="0.0"/>
                         <size key="footerReferenceSize" width="0.0" height="0.0"/>
                         <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
@@ -59,19 +59,19 @@
             </subviews>
             <color key="backgroundColor" red="1" green="0.33803475357009627" blue="0.43434570784998494" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="Oav-Wh-Ys8" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="0oE-bB-JeI"/>
+                <constraint firstItem="Oav-Wh-Ys8" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="13" id="0oE-bB-JeI"/>
                 <constraint firstItem="gPf-EH-0wx" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" constant="-13" id="3lk-gW-SKy"/>
                 <constraint firstItem="Oav-Wh-Ys8" firstAttribute="bottom" secondItem="fnl-2z-Ty3" secondAttribute="bottom" id="AN9-C5-XSB"/>
                 <constraint firstItem="gPf-EH-0wx" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" constant="-13" id="At4-Sf-Prn"/>
                 <constraint firstItem="aGv-TJ-s53" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="7" id="Cy8-xm-stO"/>
                 <constraint firstItem="Oav-Wh-Ys8" firstAttribute="top" secondItem="lFt-fF-QbH" secondAttribute="bottom" constant="20" id="G3n-Ii-Cci"/>
                 <constraint firstItem="G4z-26-wp8" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="90" id="HCN-P2-aIJ"/>
-                <constraint firstItem="Oav-Wh-Ys8" firstAttribute="trailing" secondItem="lFt-fF-QbH" secondAttribute="trailing" constant="13" id="PMn-Ug-Pnb"/>
+                <constraint firstItem="Oav-Wh-Ys8" firstAttribute="trailing" secondItem="lFt-fF-QbH" secondAttribute="trailing" id="PMn-Ug-Pnb"/>
                 <constraint firstItem="Oav-Wh-Ys8" firstAttribute="top" secondItem="aGv-TJ-s53" secondAttribute="bottom" constant="29" id="US5-Fk-vnq"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="Oav-Wh-Ys8" secondAttribute="trailing" constant="13" id="VfX-ZX-O9t"/>
                 <constraint firstItem="gPf-EH-0wx" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="172" id="Wqp-MD-2OM"/>
                 <constraint firstItem="gPf-EH-0wx" firstAttribute="width" secondItem="lFt-fF-QbH" secondAttribute="width" id="Zvt-Vy-11d"/>
                 <constraint firstItem="G4z-26-wp8" firstAttribute="leading" secondItem="aGv-TJ-s53" secondAttribute="trailing" constant="5" id="aQ3-a8-w0C"/>
-                <constraint firstItem="Oav-Wh-Ys8" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="fcG-qO-oG9"/>
                 <constraint firstItem="lFt-fF-QbH" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" constant="-13" id="jmo-zD-OCi"/>
                 <constraint firstItem="lFt-fF-QbH" firstAttribute="top" secondItem="gPf-EH-0wx" secondAttribute="bottom" id="nNS-ED-OYz"/>
                 <constraint firstItem="gPf-EH-0wx" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="10" id="nTy-BM-xQW"/>

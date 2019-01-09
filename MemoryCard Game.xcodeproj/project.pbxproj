@@ -18,6 +18,8 @@
 		4B3A2D8521DE7C5E00CF53B5 /* CardCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4B3A2D8321DE7C5E00CF53B5 /* CardCollectionViewCell.xib */; };
 		4B3A2D8721DE7E6500CF53B5 /* GameViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B3A2D8621DE7E6500CF53B5 /* GameViewModel.swift */; };
 		4B3E934A21DD0CE800A53F03 /* AlertViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B3E934921DD0CE800A53F03 /* AlertViewModel.swift */; };
+		4B3F5E3C21E695BF000601B1 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B3F5E3B21E695BF000601B1 /* Colors.swift */; };
+		4B3F5E3E21E695F1000601B1 /* Design.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B3F5E3D21E695F1000601B1 /* Design.swift */; };
 		4B56AF0621D820A0001DB774 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B56AF0421D820A0001DB774 /* MenuViewController.swift */; };
 		4B56AF0721D820A0001DB774 /* MenuViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4B56AF0521D820A0001DB774 /* MenuViewController.xib */; };
 		4B56AF0921D8299C001DB774 /* ImageData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B56AF0821D8299C001DB774 /* ImageData.swift */; };
@@ -29,6 +31,7 @@
 		4B7CE64121D7916C003C41C0 /* UserDefaultsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B7CE64021D7916C003C41C0 /* UserDefaultsService.swift */; };
 		4B7CE64421D7AAC0003C41C0 /* Source.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4B7CE64221D7AAC0003C41C0 /* Source.xcdatamodeld */; };
 		4B7CE64621D7B2AF003C41C0 /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B7CE64521D7B2AF003C41C0 /* Image.swift */; };
+		4B958A4D21E39C64000DD451 /* ViewConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B958A4C21E39C64000DD451 /* ViewConfig.swift */; };
 		4BD6F9BB21E1A38A00C4FC11 /* LevelCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BD6F9BA21E1A38A00C4FC11 /* LevelCellViewModel.swift */; };
 		4BE83DA421DCCC1F008EB54C /* LevelCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BE83DA221DCCC1F008EB54C /* LevelCollectionViewCell.swift */; };
 		4BE83DA521DCCC1F008EB54C /* LevelCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4BE83DA321DCCC1F008EB54C /* LevelCollectionViewCell.xib */; };
@@ -47,6 +50,8 @@
 		4B3A2D8321DE7C5E00CF53B5 /* CardCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CardCollectionViewCell.xib; sourceTree = "<group>"; };
 		4B3A2D8621DE7E6500CF53B5 /* GameViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewModel.swift; sourceTree = "<group>"; };
 		4B3E934921DD0CE800A53F03 /* AlertViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertViewModel.swift; sourceTree = "<group>"; };
+		4B3F5E3B21E695BF000601B1 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
+		4B3F5E3D21E695F1000601B1 /* Design.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Design.swift; sourceTree = "<group>"; };
 		4B56AF0421D820A0001DB774 /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		4B56AF0521D820A0001DB774 /* MenuViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MenuViewController.xib; sourceTree = "<group>"; };
 		4B56AF0821D8299C001DB774 /* ImageData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageData.swift; sourceTree = "<group>"; };
@@ -60,6 +65,7 @@
 		4B7CE64021D7916C003C41C0 /* UserDefaultsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsService.swift; sourceTree = "<group>"; };
 		4B7CE64321D7AAC0003C41C0 /* Source.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Source.xcdatamodel; sourceTree = "<group>"; };
 		4B7CE64521D7B2AF003C41C0 /* Image.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Image.swift; sourceTree = "<group>"; };
+		4B958A4C21E39C64000DD451 /* ViewConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewConfig.swift; sourceTree = "<group>"; };
 		4BD6F9BA21E1A38A00C4FC11 /* LevelCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelCellViewModel.swift; sourceTree = "<group>"; };
 		4BE83DA221DCCC1F008EB54C /* LevelCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelCollectionViewCell.swift; sourceTree = "<group>"; };
 		4BE83DA321DCCC1F008EB54C /* LevelCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LevelCollectionViewCell.xib; sourceTree = "<group>"; };
@@ -133,6 +139,7 @@
 		4B08EE1B21D6D9CB00D09E94 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				4B958A4B21E39C27000DD451 /* Common */,
 				4B3A2D7D21DE78C000CF53B5 /* Game */,
 				4B82707121DC2AC200D5E0BF /* Menu */,
 			);
@@ -209,6 +216,16 @@
 				4BE83DA321DCCC1F008EB54C /* LevelCollectionViewCell.xib */,
 			);
 			path = Menu;
+			sourceTree = "<group>";
+		};
+		4B958A4B21E39C27000DD451 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				4B958A4C21E39C64000DD451 /* ViewConfig.swift */,
+				4B3F5E3B21E695BF000601B1 /* Colors.swift */,
+				4B3F5E3D21E695F1000601B1 /* Design.swift */,
+			);
+			path = Common;
 			sourceTree = "<group>";
 		};
 		F83CCEADD8F6A1063E5B9ED1 /* Pods */ = {
@@ -350,6 +367,7 @@
 				4B3A2D8021DE798300CF53B5 /* GameViewController.swift in Sources */,
 				4B08EE2521D6DB4100D09E94 /* Result.swift in Sources */,
 				4B7CE63F21D78BCE003C41C0 /* DownloadService.swift in Sources */,
+				4B3F5E3E21E695F1000601B1 /* Design.swift in Sources */,
 				4B08EE1D21D6DAD900D09E94 /* Level.swift in Sources */,
 				4B1BC43421E13DE800D3BC12 /* Router.swift in Sources */,
 				4B56AF0921D8299C001DB774 /* ImageData.swift in Sources */,
@@ -357,12 +375,14 @@
 				4B6925D121D6D62100127D66 /* AppDelegate.swift in Sources */,
 				4B3A2D8721DE7E6500CF53B5 /* GameViewModel.swift in Sources */,
 				4B69E05E21DF9C1300959155 /* CardCellViewModel.swift in Sources */,
+				4B3F5E3C21E695BF000601B1 /* Colors.swift in Sources */,
 				4B56AF0621D820A0001DB774 /* MenuViewController.swift in Sources */,
 				4B7CE64421D7AAC0003C41C0 /* Source.xcdatamodeld in Sources */,
 				4B166E9921DE42BF00D76CA8 /* PickerViewModel.swift in Sources */,
 				4B7CE64121D7916C003C41C0 /* UserDefaultsService.swift in Sources */,
 				4B08EE2321D6DB1A00D09E94 /* MenuViewModel.swift in Sources */,
 				4BD6F9BB21E1A38A00C4FC11 /* LevelCellViewModel.swift in Sources */,
+				4B958A4D21E39C64000DD451 /* ViewConfig.swift in Sources */,
 				4BE83DA421DCCC1F008EB54C /* LevelCollectionViewCell.swift in Sources */,
 				4B3A2D8421DE7C5E00CF53B5 /* CardCollectionViewCell.swift in Sources */,
 				4B7CE64621D7B2AF003C41C0 /* Image.swift in Sources */,

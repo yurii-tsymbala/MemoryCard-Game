@@ -20,22 +20,29 @@ class LevelCollectionViewCell: UICollectionViewCell {
     }
   }
 
-  override func awakeFromNib() {
-    super.awakeFromNib()
-   setupView()
-  }
-
   override func prepareForReuse() {
     super.prepareForReuse()
     setupView()
   }
 
   func setupView() {
+    cellDesign(cell: self)
     levelCardImageView.contentMode = .scaleAspectFit
     levelCardImageView.image = UIImage(named: "card")
     levelCardsAmountLabel.text = viewModel.levelCardsNumber
-    levelTimeLabel.text = viewModel.levelTime
-    levelScoreLabel.text = viewModel.leveScore
+    levelTimeLabel.text = "Best Time : \(viewModel.levelTime) sec"
+    levelScoreLabel.text = "Best Score : \(viewModel.leveScore) tries"
+  }
+
+  private func cellDesign(cell: UICollectionViewCell) {
+    cell.layer.cornerRadius = CGFloat.Design.CornerRadius
+    cell.layer.borderWidth = CGFloat.Design.BorderWidth
+    cell.alpha = 0
+    cell.layer.transform = CATransform3DMakeScale(0.1, 0.1, 0.1)
+    UIView.animate(withDuration: 0.6, animations: { () -> Void in
+      cell.alpha = 1
+      cell.layer.transform = CATransform3DScale(CATransform3DIdentity, 1, 1, 1)
+    })
   }
 
 }
