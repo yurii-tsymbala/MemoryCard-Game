@@ -58,7 +58,7 @@ class MenuViewController: UIViewController {
     viewModel.pickerViewModel.currentStickerPackName
       .subscribe(onNext: { [weak self] currentStickerPackName in
         guard let strongSelf = self else {return}
-        strongSelf.stickerPackLabel.text = currentStickerPackName
+        strongSelf.stickerPackLabel.text = currentStickerPackName.rawValue
       }).disposed(by: disposeBag)
     viewModel.startGame
       .subscribe(onNext: { [weak self] gameViewModel in

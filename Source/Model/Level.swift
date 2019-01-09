@@ -10,5 +10,11 @@ import Foundation
 
 struct Level {
   var cardsNumber: String
-  var stickerPackName: String
+  var stickerPackName: StickerPack
+}
+
+enum StickerPack: String {
+  case cars = "Cars"
+  case pockemons = "Pockemons"
+  case food = "Food"
 }
