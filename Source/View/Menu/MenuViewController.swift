@@ -68,7 +68,6 @@ class MenuViewController: UIViewController {
   }
 
   private func setupView() {
-    view.backgroundColor = ViewConfig.Colors.background
     setupActivityIndicator()
     setupCollectionView()
     setupPickerView()
