@@ -63,7 +63,7 @@ class DownloadService: DownloadServiceType {
     do {
       images = try managedContext.fetch(fetchRequest)
       for _ in 1...(Int(level.cardsNumber)! / 2) {
-        let randomNumber = arc4random_uniform(30)+1
+        let randomNumber = arc4random_uniform(30)+0
         switch level.stickerPackName {
         case .cars:
           if let data = images[Int(randomNumber+61)].image {

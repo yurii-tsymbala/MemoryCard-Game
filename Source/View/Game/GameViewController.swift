@@ -18,7 +18,7 @@ class GameViewController: UIViewController {
   @IBOutlet private weak var menuButton: UIButton!
   @IBOutlet private weak var gameStackView: UIStackView!
   private let cardCollectionViewCellId = "CardCollectionViewCell"
-   private let cellMagrings: CGFloat = 5
+  private let cellMagrings: CGFloat = 5
   private let disposeBag = DisposeBag()
   private var viewModel: GameViewModel!
 
@@ -45,6 +45,14 @@ class GameViewController: UIViewController {
   }
 
   private func setupView() {
+    view.backgroundColor = UIColor.Backgrounds.mainYellow
+    cardCollectionView.backgroundColor = UIColor.Backgrounds.mainYellow
+    menuButton.backgroundColor = UIColor.Backgrounds.darkOrange
+    menuButton.layer.borderWidth = CGFloat.Design.buttonBorderWidth / 4
+    timerLabel.backgroundColor = UIColor.Backgrounds.mediumOrange
+    timerLabel.layer.borderWidth = CGFloat.Design.buttonBorderWidth / 4
+    flipCountLabel.backgroundColor = UIColor.Backgrounds.lightOrange
+    flipCountLabel.layer.borderWidth = CGFloat.Design.buttonBorderWidth / 4
     setupCollectionView()
     setupMenuButton()
   }
@@ -87,7 +95,7 @@ extension GameViewController: UICollectionViewDelegate {
 }
 extension GameViewController: UICollectionViewDelegateFlowLayout {
 
-  func cellsRowAndColomn() -> (cellInRow: Int, cellInColomn: Int) {
+ private func cellsRowAndColomn() -> (cellInRow: Int, cellInColomn: Int) {
     var cellInRow = Int(floor(sqrt(Double(viewModel.level.cardsNumber)!)))
     while (Int(viewModel.level.cardsNumber)! % cellInRow != 0) {
       cellInRow -= 1
@@ -99,14 +107,18 @@ extension GameViewController: UICollectionViewDelegateFlowLayout {
     return (cellInRow, cellInColomn)
   }
 
-  func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+  func collectionView(_ collectionView: UICollectionView,
+                      layout collectionViewLayout: UICollectionViewLayout,
+                      sizeForItemAt indexPath: IndexPath) -> CGSize {
     let screenWidth = collectionView.frame.width
     let screenHeight = collectionView.frame.height
     let cell = cellsRowAndColomn()
     if (screenWidth < screenHeight) {
-      return CGSize(width: screenWidth/CGFloat(cell.cellInRow) - cellMagrings, height: screenHeight/CGFloat(cell.cellInColomn) - cellMagrings)
+      return CGSize(width: screenWidth / CGFloat(cell.cellInRow) - cellMagrings,
+                    height: screenHeight/CGFloat(cell.cellInColomn) - cellMagrings)
     } else {
-      return CGSize(width: screenWidth/CGFloat(cell.cellInColomn) - cellMagrings, height: screenHeight/CGFloat(cell.cellInRow) - cellMagrings)
+      return CGSize(width: screenWidth / CGFloat(cell.cellInColomn) - cellMagrings,
+                    height: screenHeight / CGFloat(cell.cellInRow) - cellMagrings)
     }
   }
 }
