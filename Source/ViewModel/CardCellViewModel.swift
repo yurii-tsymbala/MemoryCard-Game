@@ -8,9 +8,11 @@
 
 import UIKit
 
-struct CardCellViewModel {
+class CardCellViewModel {
   var cardImageName = ""
-  var cardImageData: UIImage
+  var cardImageData = UIImage(named: "card")
   var isFlipped = false
   var isMatched = false
+
+
 }

@@ -12,9 +12,22 @@ class CardCollectionViewCell: UICollectionViewCell {
   @IBOutlet private weak var photoCard: UIImageView!
   @IBOutlet private weak var backgroundCard: UIImageView!
 
-  override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
+  var viewModel: CardCellViewModel! {
+    didSet{
+      setupView()
     }
+  }
 
+  override func prepareForReuse() {
+    super.prepareForReuse()
+    setupView()
+  }
+
+  private func setupView() {
+    backgroundCard.isHidden = true
+    DispatchQueue.main.async { [weak self] in
+      guard let strongSelf = self else { return }
+      strongSelf.photoCard.image = strongSelf.viewModel.cardImageData
+    }
+  }
 }

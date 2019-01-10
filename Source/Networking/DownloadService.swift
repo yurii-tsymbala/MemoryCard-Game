@@ -25,7 +25,8 @@ enum DownloadServiceError: Error {
 
 protocol DownloadServiceType {
   func confirmTheDownload(completion: @escaping (Result<Bool, Error>) -> Void)
-  func fetchdata() //func fetchUIImageArray() with logic of stickerpack // буду повертати юайімеджі 1)в залежноті від стікерпаку
+  func generateCards(forLevel level: Level, completion: @escaping (Result<[CardCellViewModel],Error>) -> Void)
+  //func fetchUIImageArray() with logic of stickerpack // буду повертати юайімеджі 1)в залежноті від стікерпаку
   //  private var images: [ImageMO] = []                                             2) кількість карток/2
   //                                                                                 3) зарандомити
   //  на вході функції потрібно вказати назву стікепарку і кількість карточок в левелі щоб повернути рандомні карточки
@@ -34,6 +35,7 @@ protocol DownloadServiceType {
 }
 
 class DownloadService: DownloadServiceType {
+
   private var images: [Image]!
   private var imagesData = [ImageData]()
 
@@ -56,8 +58,9 @@ class DownloadService: DownloadServiceType {
     }
   }
 
-  func fetchdata() { // переробити з  комплішеном
+  func generateCards(forLevel level: Level, completion: @escaping (Result<[CardCellViewModel],Error>) -> Void) { // переробити з  комплішеном
     var images: [ImageMO]
+    var cardArray = [CardCellViewModel]()
     guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return}
     let managedContext = appDelegate.persistentContainer.viewContext
     let fetchRequest:NSFetchRequest<ImageMO> = ImageMO.fetchRequest()
@@ -65,11 +68,62 @@ class DownloadService: DownloadServiceType {
     fetchRequest.sortDescriptors = [sortDescriptor]
     do {
       images = try managedContext.fetch(fetchRequest)
-      for image in images {
-        print(image.name ?? 0)
+      for _ in 1...(Int(level.cardsNumber)! / 2) {
+        let randomNumber = arc4random_uniform(30)+1
+        switch level.stickerPackName {
+        case .cars:
+          if let data = images[Int(randomNumber)].image {
+            let cardOne = CardCellViewModel()
+            cardOne.cardImageName = images[Int(randomNumber)].name!
+            cardOne.cardImageData = UIImage(data: data)
+            let cardTwo = CardCellViewModel()
+            cardTwo.cardImageName = images[Int(randomNumber)].name!
+            cardTwo.cardImageData = UIImage(data: data)
+            cardArray.append(cardOne)
+            cardArray.append(cardTwo)
+          }
+        case .pockemons:
+          if let data = images[Int(randomNumber)].image {
+            let cardOne = CardCellViewModel()
+            cardOne.cardImageName = images[Int(randomNumber+61)].name!
+            cardOne.cardImageData = UIImage(data: data)
+            let cardTwo = CardCellViewModel()
+            cardTwo.cardImageName = images[Int(randomNumber+61)].name!
+            cardTwo.cardImageData = UIImage(data: data)
+            cardArray.append(cardOne)
+            cardArray.append(cardTwo)
+          }
+        case .food:
+          if let data = images[Int(randomNumber)].image {
+            let cardOne = CardCellViewModel()
+            cardOne.cardImageName = images[Int(randomNumber+30)].name!
+            cardOne.cardImageData = UIImage(data: data)
+            let cardTwo = CardCellViewModel()
+            cardTwo.cardImageName = images[Int(randomNumber+30)].name!
+            cardTwo.cardImageData = UIImage(data: data)
+            cardArray.append(cardOne)
+            cardArray.append(cardTwo)
+          }
+        }
       }
+
+      //MARK: Randoming cards in Array
+      var randomCardArray = [CardCellViewModel]()
+      var upperLimit:UInt = UInt(level.cardsNumber)!
+      var randomlyGeneratedNumber: Int
+      let cardsNumber = Int(level.cardsNumber)!
+
+      for _ in 1...(cardsNumber) {
+        randomlyGeneratedNumber = Int(arc4random_uniform(UInt32(upperLimit)))
+        randomCardArray.append(cardArray[randomlyGeneratedNumber])
+        cardArray.remove(at: randomlyGeneratedNumber)
+        upperLimit -= 1
+      }
+      
+      completion(Result.success(randomCardArray))
+
     } catch let error as NSError {
-      print("Could not fetch. \(error), \(error.userInfo)")
+      completion(Result.failure(error))
     }
   }
 
