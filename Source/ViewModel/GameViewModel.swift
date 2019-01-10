@@ -18,14 +18,13 @@ class GameViewModel {
 
   init(level:Level) {
     self.level = level
-    generateCardsForLevel(withLevel: level)
   }
 
   var numberOfCells: Int {
     return cellViewModels.count
   }
 
-  func generateCardsForLevel(withLevel level: Level) {
+  func generateCardsForLevel() {
     downloadService.generateCards(forLevel: level) { [weak self] result in
       guard let strongSelf = self else { return }
       switch result {
@@ -37,9 +36,6 @@ class GameViewModel {
         print(error)
       }
     }
-    print("CARDS GENERATED")// з downloadService функція буде
-    // тут має згенеруватись масив cardCells: [CardCellViewModel] = []
-    // релоад дата
   }
 
   func selectCard(atIndex index: Int) {

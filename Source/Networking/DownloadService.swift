@@ -26,12 +26,6 @@ enum DownloadServiceError: Error {
 protocol DownloadServiceType {
   func confirmTheDownload(completion: @escaping (Result<Bool, Error>) -> Void)
   func generateCards(forLevel level: Level, completion: @escaping (Result<[CardCellViewModel],Error>) -> Void)
-  //func fetchUIImageArray() with logic of stickerpack // буду повертати юайімеджі 1)в залежноті від стікерпаку
-  //  private var images: [ImageMO] = []                                             2) кількість карток/2
-  //                                                                                 3) зарандомити
-  //  на вході функції потрібно вказати назву стікепарку і кількість карточок в левелі щоб повернути рандомні карточки
-  // передивитись логіку з попередньої апки
-
 }
 
 class DownloadService: DownloadServiceType {
@@ -58,7 +52,7 @@ class DownloadService: DownloadServiceType {
     }
   }
 
-  func generateCards(forLevel level: Level, completion: @escaping (Result<[CardCellViewModel],Error>) -> Void) { // переробити з  комплішеном
+  func generateCards(forLevel level: Level, completion: @escaping (Result<[CardCellViewModel],Error>) -> Void) {
     var images: [ImageMO]
     var cardArray = [CardCellViewModel]()
     guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return}
@@ -165,7 +159,7 @@ class DownloadService: DownloadServiceType {
       }.resume()
   }
 
-  private func saveToCoreData(images: [ImageData], completion: @escaping (Result<Bool, Error>) -> Void ) {
+  private func saveToCoreData(images: [ImageData], completion: @escaping (Result<Bool, Error>) -> Void) {
     DispatchQueue.main.async {
       if let appDelegate = (UIApplication.shared.delegate as? AppDelegate) {
         for image in images {

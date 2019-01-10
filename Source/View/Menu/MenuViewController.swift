@@ -132,8 +132,10 @@ extension MenuViewController: UICollectionViewDataSource {
   }
 
   func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-    let cell = levelsCollectionView.dequeueReusableCell(withReuseIdentifier: levelCollectionViewCellId, for: indexPath) as! LevelCollectionViewCell
-    cell.viewModel = viewModel.getCellViewModel(at: indexPath.row)
+    let cell = levelsCollectionView.dequeueReusableCell(withReuseIdentifier: levelCollectionViewCellId, for: indexPath)
+    if let levelCell = cell as? LevelCollectionViewCell {
+      levelCell.viewModel = viewModel.getCellViewModel(at: indexPath.row)
+    }
     return cell
   }
 }

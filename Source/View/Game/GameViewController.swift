@@ -31,6 +31,7 @@ class GameViewController: UIViewController {
     super.viewDidLoad()
     setupView()
     observeViewModel()
+    viewModel.generateCardsForLevel()
   }
 
   private func observeViewModel() {
