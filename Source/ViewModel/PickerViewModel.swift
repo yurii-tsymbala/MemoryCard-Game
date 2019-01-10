@@ -12,11 +12,11 @@ import RxCocoa
 
 class PickerViewModel {
 
-  var currentStickerPackName = BehaviorRelay<StickerPack>(value: .cars)
+  var currentStickerPackName = BehaviorRelay<StickerPack>(value: .pockemons)
 
-  let stickerPacksArray = [UIImage(named: "Cars")!,
+  let stickerPacksArray = [UIImage(named: "Pockemons")!,
                            UIImage(named: "Food")!,
-                           UIImage(named: "Pockemons")!]
+                           UIImage(named: "Cars")!]
 
   var numberOfRowsForPicker: Int {
     return stickerPacksArray.count
@@ -36,13 +36,13 @@ class PickerViewModel {
   func sendInfoToLabel(indexOfTheRow row: Int) {
     switch row {
     case 0:
-      currentStickerPackName.accept(.cars)
+      currentStickerPackName.accept(.pockemons)
     case 1:
       currentStickerPackName.accept(.food)
     case 2:
-      currentStickerPackName.accept(.pockemons)
-    default:
       currentStickerPackName.accept(.cars)
+    default:
+      currentStickerPackName.accept(.pockemons)
     }
   }
 }

@@ -72,18 +72,7 @@ class DownloadService: DownloadServiceType {
         let randomNumber = arc4random_uniform(30)+1
         switch level.stickerPackName {
         case .cars:
-          if let data = images[Int(randomNumber)].image {
-            let cardOne = CardCellViewModel()
-            cardOne.cardImageName = images[Int(randomNumber)].name!
-            cardOne.cardImageData = UIImage(data: data)
-            let cardTwo = CardCellViewModel()
-            cardTwo.cardImageName = images[Int(randomNumber)].name!
-            cardTwo.cardImageData = UIImage(data: data)
-            cardArray.append(cardOne)
-            cardArray.append(cardTwo)
-          }
-        case .pockemons:
-          if let data = images[Int(randomNumber)].image {
+          if let data = images[Int(randomNumber+61)].image {
             let cardOne = CardCellViewModel()
             cardOne.cardImageName = images[Int(randomNumber+61)].name!
             cardOne.cardImageData = UIImage(data: data)
@@ -94,12 +83,23 @@ class DownloadService: DownloadServiceType {
             cardArray.append(cardTwo)
           }
         case .food:
-          if let data = images[Int(randomNumber)].image {
+          if let data = images[Int(randomNumber+30)].image {
             let cardOne = CardCellViewModel()
             cardOne.cardImageName = images[Int(randomNumber+30)].name!
             cardOne.cardImageData = UIImage(data: data)
             let cardTwo = CardCellViewModel()
             cardTwo.cardImageName = images[Int(randomNumber+30)].name!
+            cardTwo.cardImageData = UIImage(data: data)
+            cardArray.append(cardOne)
+            cardArray.append(cardTwo)
+          }
+        case .pockemons:
+          if let data = images[Int(randomNumber)].image {
+            let cardOne = CardCellViewModel()
+            cardOne.cardImageName = images[Int(randomNumber)].name!
+            cardOne.cardImageData = UIImage(data: data)
+            let cardTwo = CardCellViewModel()
+            cardTwo.cardImageName = images[Int(randomNumber)].name!
             cardTwo.cardImageData = UIImage(data: data)
             cardArray.append(cardOne)
             cardArray.append(cardTwo)
