@@ -18,7 +18,6 @@ class GameViewController: UIViewController {
   @IBOutlet private weak var menuButton: UIButton!
   @IBOutlet private weak var gameStackView: UIStackView!
   private let cardCollectionViewCellId = "CardCollectionViewCell"
-  private var firstFlippedCardIndex:IndexPath?
   private let cellMagrings: CGFloat = 5
   private let disposeBag = DisposeBag()
   private var viewModel: GameViewModel!
@@ -90,16 +89,9 @@ extension GameViewController : UICollectionViewDataSource {
 
 extension GameViewController: UICollectionViewDelegate {
   func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-    let cell = cardCollectionView.cellForItem(at: indexPath) as! CardCollectionViewCell
-    if cell.viewModel.isFlipped == false && cell.viewModel.isMatched == false {
-      cell.flip()
-      cell.viewModel.isFlipped = true
-      if viewModel.firstFlippedCardIndex == nil {
-        viewModel.firstFlippedCardIndex = indexPath
-      } else {
-        viewModel.checkForMatches(indexPath,cardCollectionView: cardCollectionView)
-      }
-    }
+    viewModel.checkCell(cell: cardCollectionView.cellForItem(at: indexPath) as! CardCollectionViewCell,
+                        indexPath: indexPath,
+                        collectionView: cardCollectionView)
   }
 }
 

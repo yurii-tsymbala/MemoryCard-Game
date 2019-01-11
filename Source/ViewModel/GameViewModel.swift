@@ -15,7 +15,7 @@ class GameViewModel {
   let level: Level
   private(set) var cellViewModels: [CardCellViewModel] = []
   private let downloadService = DownloadService()
-   var firstFlippedCardIndex:IndexPath?
+  var firstFlippedCardIndex:IndexPath?
   var reloadData = PublishSubject<Void>()
 
   init(level:Level) {
@@ -50,8 +50,20 @@ class GameViewModel {
     return cellViewModels[index]
   }
 
+  func checkCell(cell: CardCollectionViewCell, indexPath: IndexPath, collectionView: UICollectionView) {
+    if cell.viewModel.isFlipped == false && cell.viewModel.isMatched == false {
+      cell.flip()
+      cell.viewModel.isFlipped = true
+      if firstFlippedCardIndex == nil {
+        firstFlippedCardIndex = indexPath
+      } else {
+        checkForMatches(indexPath,cardCollectionView: collectionView)
+      }
+    }
+  }
 
-   func checkForMatches(_ secondFlippedCardIndex:IndexPath, cardCollectionView: UICollectionView) {
+
+  func checkForMatches(_ secondFlippedCardIndex:IndexPath, cardCollectionView: UICollectionView) {
     let cardOneCell = cardCollectionView.cellForItem(at: firstFlippedCardIndex!) as? CardCollectionViewCell
     let cardTwoCell = cardCollectionView.cellForItem(at: secondFlippedCardIndex) as? CardCollectionViewCell
     let cardOne = cellViewModels[firstFlippedCardIndex!.row]
@@ -88,7 +100,7 @@ class GameViewModel {
     firstFlippedCardIndex = nil
   }
 
-   func checkGameEnded() {
+  func checkGameEnded() {
     var isWon = true
     for cellViewModel in cellViewModels {
       if cellViewModel.isMatched == false {
