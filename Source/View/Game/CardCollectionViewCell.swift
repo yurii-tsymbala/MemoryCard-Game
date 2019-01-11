@@ -24,7 +24,6 @@ class CardCollectionViewCell: UICollectionViewCell {
   }
 
   private func setupView() {
-    backgroundCard.isHidden = true  // забрати потім
     DispatchQueue.main.async { [weak self] in
       guard let strongSelf = self else { return }
       strongSelf.photoCard.image = strongSelf.viewModel.cardImageData

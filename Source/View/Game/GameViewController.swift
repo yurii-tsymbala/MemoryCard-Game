@@ -18,6 +18,7 @@ class GameViewController: UIViewController {
   @IBOutlet private weak var menuButton: UIButton!
   @IBOutlet private weak var gameStackView: UIStackView!
   private let cardCollectionViewCellId = "CardCollectionViewCell"
+  private var firstFlippedCardIndex:IndexPath?
   private let cellMagrings: CGFloat = 5
   private let disposeBag = DisposeBag()
   private var viewModel: GameViewModel!
@@ -78,10 +79,62 @@ extension GameViewController : UICollectionViewDataSource {
     return viewModel.numberOfCells
   }
 
+  private func checkForMatches(_ secondFlippedCardIndex:IndexPath) {
+    let cardOneCell = cardCollectionView.cellForItem(at: firstFlippedCardIndex!) as? CardCollectionViewCell
+    let cardTwoCell = cardCollectionView.cellForItem(at: secondFlippedCardIndex) as? CardCollectionViewCell
+    let cardOne = viewModel.cellViewModels[firstFlippedCardIndex!.row]
+    let cardTwo = viewModel.cellViewModels[secondFlippedCardIndex.row]
+
+    if cardOne.cardImageName == cardTwo.cardImageName {
+      cardOne.isMatched = true
+      cardTwo.isMatched = true
+      cardCollectionView.isUserInteractionEnabled = false
+      DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.5) {
+        self.cardCollectionView.isUserInteractionEnabled = true
+        cardOneCell?.remove()
+        cardTwoCell?.remove()
+      }
+      DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.5) {
+        cardOneCell?.removeFromSuperview()
+        cardTwoCell?.removeFromSuperview()
+        self.checkGameEnded()
+      }
+    } else {
+      //flipCount += 1
+      cardOne.isFlipped = false
+      cardTwo.isFlipped = false
+      cardCollectionView.isUserInteractionEnabled = false
+      DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.4) {
+        self.cardCollectionView.isUserInteractionEnabled = true
+        cardOneCell?.flipback()
+        cardTwoCell?.flipback()
+      }
+    }
+    if cardOneCell == nil {
+      cardCollectionView.reloadItems(at: [firstFlippedCardIndex!])
+    }
+    firstFlippedCardIndex = nil
+  }
+
+  private func checkGameEnded() {
+    var isWon = true
+    for cellViewModel in viewModel.cellViewModels {
+      if cellViewModel.isMatched == false {
+        isWon = false
+        break
+      }
+    }
+    if isWon == true {
+      print("You won!")
+      //timer?.invalidate()
+      //performSegue(withIdentifier: "RecordSegue", sender: self)
+    }
+  }
+
   func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
     let cell = cardCollectionView.dequeueReusableCell(withReuseIdentifier: cardCollectionViewCellId, for: indexPath)
     if let cardCell = cell as? CardCollectionViewCell {
-     cardCell.viewModel = viewModel.getCellViewModel(at: indexPath.row)
+      cardCell.viewModel = viewModel.getCellViewModel(at: indexPath.row)
     }
     return cell
   }
@@ -89,13 +142,22 @@ extension GameViewController : UICollectionViewDataSource {
 
 extension GameViewController: UICollectionViewDelegate {
   func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-
+    let cell = cardCollectionView.cellForItem(at: indexPath) as! CardCollectionViewCell
+    if cell.viewModel.isFlipped == false && cell.viewModel.isMatched == false {
+      cell.flip()
+      cell.viewModel.isFlipped = true
+      if firstFlippedCardIndex == nil {
+        firstFlippedCardIndex = indexPath
+      } else {
+        checkForMatches(indexPath)
+      }
+    }
   }
-
 }
+
 extension GameViewController: UICollectionViewDelegateFlowLayout {
 
- private func cellsRowAndColomn() -> (cellInRow: Int, cellInColomn: Int) {
+  private func cellsRowAndColomn() -> (cellInRow: Int, cellInColomn: Int) {
     var cellInRow = Int(floor(sqrt(Double(viewModel.level.cardsNumber)!)))
     while (Int(viewModel.level.cardsNumber)! % cellInRow != 0) {
       cellInRow -= 1
